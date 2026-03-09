@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>[Ton Prénom] — Développeur Web Passionné</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --rosso: #c8102e;          /* Rouge Ferrari-inspired, mais adaptable Porsche */
+      --nero: #0a0a0a;
+      --grigio: #1e1e1e;
+      --oro: #c9a96e;
+      --text: #f5f5f5;
+      --text-dim: #b0b0b0;
+      --transition: all 0.45s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--nero);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 2000;
+      transition: var(--transition);
+      padding: 1.8rem 5% 1.6rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10,10,10,0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(200,16,46,0.1);
+    }
+
+    header.scrolled {
+      padding: 1.2rem 5% 1rem;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: white;
+      letter-spacing: 1px;
+    }
+
+    nav {
+      display: flex;
+      gap: 3rem;
+    }
+
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      position: relative;
+      transition: var(--transition);
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: var(--rosso);
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--rosso);
+      transition: var(--transition);
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* Hero */
+    .hero {
+      height: 100vh;
+      min-height: 800px;
+      background: url('https://newsroom.porsche.com/.image/t_share/MTk5NjYxNzY5MjA5MjE1NzM2/2025-porsche-911-carrera-gts-coupe.jpg') center/cover no-repeat fixed;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 5%;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(10,10,10,0.4), rgba(10,10,10,0.8) 70%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1000px;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(5rem, 12vw, 11rem);
+      font-weight: 700;
+      line-height: 0.9;
+      margin-bottom: 1.5rem;
+      color: white;
+      text-shadow: 0 6px 30px rgba(0,0,0,0.7);
+    }
+
+    .hero .tagline {
+      font-size: 1.5rem;
+      max-width: 800px;
+      margin: 0 auto 2.5rem;
+      color: var(--text-dim);
+    }
+
+    .btn-primary {
+      background: var(--rosso);
+      color: white;
+      padding: 1rem 3rem;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      text-decoration: none;
+      display: inline-block;
+      transition: var(--transition);
+    }
+
+    .btn-primary:hover {
+      background: #a00d24;
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(200,16,46,0.4);
+    }
+
+    /* Sections */
+    section {
+      padding: 12vh 5% 10vh;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.8rem;
+      text-align: center;
+      margin-bottom: 4rem;
+      color: white;
+    }
+
+    h2::after {
+      content: '';
+      width: 100px;
+      height: 3px;
+      background: var(--rosso);
+      display: block;
+      margin: 1.5rem auto 0;
+    }
+
+    .card {
+      background: var(--grigio);
+      border: 1px solid rgba(201,169,110,0.08);
+      border-radius: 12px;
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+      transition: var(--transition);
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+    }
+
+    /* Burger mobile */
+    .burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      z-index: 3000;
+    }
+
+    .burger span {
+      width: 30px;
+      height: 3px;
+      background: white;
+      transition: var(--transition);
+    }
+
+    @media (max-width: 1024px) {
+      nav {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: var(--nero);
+        flex-direction: column;
+        justify-content: center;
+        gap: 3rem;
+        transform: translateY(-100%);
+        transition: transform 0.5s ease;
+      }
+
+      nav.active {
+        transform: translateY(0);
+      }
+
+      .burger {
+        display: flex;
+      }
+
+      .burger.active span:nth-child(1) { transform: rotate(45deg) translate(7px,7px); }
+      .burger.active span:nth-child(2) { opacity: 0; }
+      .burger.active span:nth-child(3) { transform: rotate(-45deg) translate(6px,-6px); }
+    }
+  </style>
+</head>
+<body>
+
+<header id="header">
+  <div class="logo">Mon Portfolio</div>
+
+  <nav id="nav">
+    <a href="#accueil">Accueil</a>
+    <a href="#parcours">Parcours</a>
+    <a href="#projets">Projets</a>
+    <a href="#passions">Passions</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div class="burger" id="burger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</header>
+
+<section class="hero" id="accueil">
+  <div class="hero-content">
+    <h1>Nathan REBOURG</h1>
+    <p class="tagline">
+      Etudiant en alternance – filière BUT Réseaux & Télécommunications<br>
+      Passionné d’automobile, de performance et d’expériences premium
+    </p>
+    <a href="#contact" class="btn-primary">Me contacter</a>
+  </div>
+</section>
+
+<section id="parcours">
+  <h2>Parcours</h2>
+  <div class="card">
+    <p style="font-size:1.2rem; text-align:center; color:var(--text-dim);">
+      Actuellement en alternance en développement web – BTS SIO / filière RT<br>
+      Objectif 2026+ : devenir frontalier et intégrer une équipe tech en Suisse (Genève / Lausanne)<br><br>
+      Expérience terrain : création d’interfaces modernes, optimisation responsive, projets full-stack en entreprise.
+    </p>
+  </div>
+</section>
+
+<section id="projets">
+  <h2>Mes Projets</h2>
+  <div class="card">
+    <h3 style="color:var(--oro);">Site E-commerce Premium</h3>
+    <p>Projet en alternance : boutique luxe avec design responsive, panier dynamique et intégration paiement.</p>
+  </div>
+  <div class="card">
+    <h3 style="color:var(--oro);">Dashboard Analytics</h3>
+    <p>Outil de suivi KPI : graphiques interactifs, filtres temps réel, export PDF/Excel.</p>
+  </div>
+  <div class="card">
+    <h3 style="color:var(--oro);">Portfolio Personnel</h3>
+    <p>Ce site – design élégant inspiré automobile de prestige.</p>
+  </div>
+</section>
+
+<section id="passions">
+  <h2>Mes Passions</h2>
+  <div class="card">
+    <h3 style="color:var(--oro);">Automobile de prestige</h3>
+    <p>Passion pour les sportives (Porsche, Ferrari...), Grands Prix, routes mythiques.</p>
+  </div>
+  <div class="card">
+    <h3 style="color:var(--oro);">Sport & Performance</h3>
+    <p>Musculation, padel, course – toujours pousser ses limites.</p>
+  </div>
+  <div class="card">
+    <h3 style="color:var(--oro);">Voyages</h3>
+    <p>Découverte de paysages, routes légendaires et cultures variées.</p>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <form style="max-width:700px; margin:0 auto; display:grid; gap:1.6rem;">
+    <input type="text" placeholder="Nom" required style="padding:1.2rem; background:var(--grigio); border:1px solid #333; color:white; border-radius:8px;">
+    <input type="email" placeholder="Email" required style="padding:1.2rem; background:var(--grigio); border:1px solid #333; color:white; border-radius:8px;">
+    <textarea rows="5" placeholder="Ton message..." required style="padding:1.2rem; background:var(--grigio); border:1px solid #333; color:white; border-radius:8px;"></textarea>
+    <button type="submit" class="btn-primary">Envoyer</button>
+  </form>
+</section>
+
+<footer style="text-align:center; padding:4rem 0; color:var(--text-dim);">
+  © 2026 — [Ton Prénom] — Code & Passion Automobile
+</footer>
+
+<script>
+  const burger = document.getElementById('burger');
+  const nav = document.getElementById('nav');
+
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('active');
+    nav.classList.toggle('active');
+  });
+
+  // Fermer menu mobile sur clic lien
+  document.querySelectorAll('#nav a').forEach(a => {
+    a.addEventListener('click', () => {
+      burger.classList.remove('active');
+      nav.classList.remove('active');
+    });
+  });
+
+  // Header scroll
+  window.addEventListener('scroll', () => {
+    document.getElementById('header').classList.toggle('scrolled', window.scrollY > 80);
+  });
+</script>
+</body>
+</html>

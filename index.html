@@ -178,6 +178,27 @@
       box-shadow: 0 16px 45px rgba(0,0,0,0.45);
     }
 
+    /* gallery inside cards (3 images) */
+    .card .gallery {
+      display: flex;
+      gap: 0.8rem;
+      margin-top: 1.6rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .card .gallery img {
+      width: 100%;
+      max-width: 120px;
+      border-radius: 8px;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .card .gallery img:hover {
+      transform: scale(1.05);
+    }
+
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -307,14 +328,29 @@
   <div class="card">
     <h3 style="color:var(--gold);">Youtube</h3>
     <p>En possession d'une chaine de 15000 abonnés sur Youtube qui montre mon expertise en Communication.</p>
+    <div class="gallery">
+      <img src="assets/youtube1.jpg" alt="Vidéo 1" />
+      <img src="assets/youtube2.jpg" alt="Vidéo 2" />
+      <img src="assets/youtube3.jpg" alt="Vidéo 3" />
+    </div>
   </div>
   <div class="card">
     <h3 style="color:var(--gold);">Dashboard entreprise</h3>
     <p>Outil interne : visualisation de données, graphiques Chart.js, authentification simple.</p>
+    <div class="gallery">
+      <img src="assets/dashboard1.jpg" alt="Dashboard 1" />
+      <img src="assets/dashboard2.jpg" alt="Dashboard 2" />
+      <img src="assets/dashboard3.jpg" alt="Dashboard 3" />
+    </div>
   </div>
   <div class="card">
     <h3 style="color:var(--gold);">Portfolio personnel (ce site)</h3>
     <p>Design inspiré automobile premium – animations subtiles, responsive total.</p>
+    <div class="gallery">
+      <img src="assets/portfolio1.jpg" alt="Capture 1" />
+      <img src="assets/portfolio2.jpg" alt="Capture 2" />
+      <img src="assets/portfolio3.jpg" alt="Capture 3" />
+    </div>
   </div>
 </section>
 
@@ -323,14 +359,29 @@
   <div class="card">
     <h3 style="color:var(--gold);">Automobile</h3>
     <p>Passionné par les sportives (Porsche 911 Turbo S, Ferrari SF90, Lamborghini Huracán...). Suivi WEC, Formule 1, routes mythiques.</p>
+    <div class="gallery">
+      <img src="assets/auto1.jpg" alt="Porsche 911" />
+      <img src="assets/auto2.jpg" alt="Ferrari SF90" />
+      <img src="assets/auto3.jpg" alt="Lamborghini Huracán" />
+    </div>
   </div>
   <div class="card">
     <h3 style="color:var(--gold);">Sport</h3>
     <p>Musculation 4–5×/semaine, padel, course à pied – recherche constante de progression.</p>
+    <div class="gallery">
+      <img src="assets/sport1.jpg" alt="Musculation" />
+      <img src="assets/sport2.jpg" alt="Padel" />
+      <img src="assets/sport3.jpg" alt="Course à pied" />
+    </div>
   </div>
   <div class="card">
     <h3 style="color:var(--gold);">Voyages</h3>
     <p>Road-trips, paysages alpins, circuits européens, découverte gastronomique.</p>
+    <div class="gallery">
+      <img src="assets/travel1.jpg" alt="Road-trip" />
+      <img src="assets/travel2.jpg" alt="Alpes" />
+      <img src="assets/travel3.jpg" alt="Cuisine" />
+    </div>
   </div>
 </section>
 
@@ -358,12 +409,12 @@
     <p id="formStatus" style="text-align:center; color:var(--gold); display:none; font-weight:500;"></p>
   </form>
   <p style="text-align:center; color:var(--dim); margin-top:1.5rem; font-size:0.9rem;">
-     <code style="background:#333; padding:0.3rem 0.6rem; border-radius:4px;"></code> Formulaire via Formspree (<a href="https://formspree.io/" target="_blank" style="color:var(--primary); text-decoration:none;">formspree.io</a>)
+    ⚙️ Note : Remplacez <code style="background:#333; padding:0.3rem 0.6rem; border-radius:4px;">YOUR_FORM_ID</code> par votre ID Formspree (<a href="https://formspree.io/" target="_blank" style="color:var(--primary); text-decoration:none;">formspree.io</a>)
   </p>
 </section>
 
 <footer style="text-align:center; padding:5rem 0 3rem; color:var(--dim); font-size:0.95rem;">
-  © 2026 — Nathan REBOURG — Code, Performance & Passion Automobile
+  © 2026 — [Ton Prénom] — Code, Performance & Passion Automobile
 </footer>
 
 <script>

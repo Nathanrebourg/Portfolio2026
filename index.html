@@ -350,12 +350,16 @@
 
 <section id="contact">
   <h2>Contact</h2>
-  <form style="max-width:720px; margin:0 auto; display:grid; gap:1.8rem;">
-    <input type="text" placeholder="Nom / Prénom" required style="padding:1.3rem; background:var(--gray); border:1px solid #333; color:white; border-radius:8px; font-size:1rem;">
-    <input type="email" placeholder="Email" required style="padding:1.3rem; background:var(--gray); border:1px solid #333; color:white; border-radius:8px; font-size:1rem;">
-    <textarea rows="6" placeholder="Message, proposition de mission, alternance, frontalier Suisse, discussion Porsche..." required style="padding:1.3rem; background:var(--gray); border:1px solid #333; color:white; border-radius:8px; font-size:1rem;"></textarea>
-    <button type="submit" class="btn">Envoyer</button>
+  <form id="contactForm" action="https://formspree.io/f/xaqpqvpe" method="POST" style="max-width:720px; margin:0 auto; display:grid; gap:1.8rem;">
+    <input type="text" name="name" placeholder="Nom / Prénom" required style="padding:1.3rem; background:var(--gray); border:1px solid #333; color:white; border-radius:8px; font-size:1rem; transition:var(--transition);">
+    <input type="email" name="email" placeholder="Email" required style="padding:1.3rem; background:var(--gray); border:1px solid #333; color:white; border-radius:8px; font-size:1rem; transition:var(--transition);">
+    <textarea rows="6" name="message" placeholder="Message, proposition de mission, alternance, frontalier Suisse, discussion Porsche..." required style="padding:1.3rem; background:var(--gray); border:1px solid #333; color:white; border-radius:8px; font-size:1rem; transition:var(--transition);"></textarea>
+    <button type="submit" class="btn" style="width:100%;">Envoyer</button>
+    <p id="formStatus" style="text-align:center; color:var(--gold); display:none; font-weight:500;"></p>
   </form>
+  <p style="text-align:center; color:var(--dim); margin-top:1.5rem; font-size:0.9rem;">
+    ⚙️ Note : Remplacez <code style="background:#333; padding:0.3rem 0.6rem; border-radius:4px;">YOUR_FORM_ID</code> par votre ID Formspree (<a href="https://formspree.io/" target="_blank" style="color:var(--primary); text-decoration:none;">formspree.io</a>)
+  </p>
 </section>
 
 <footer style="text-align:center; padding:5rem 0 3rem; color:var(--dim); font-size:0.95rem;">
@@ -365,6 +369,8 @@
 <script>
   const burger = document.getElementById('burger');
   const nav = document.getElementById('nav');
+  const contactForm = document.getElementById('contactForm');
+  const formStatus = document.getElementById('formStatus');
 
   burger.addEventListener('click', () => {
     burger.classList.toggle('active');
@@ -381,6 +387,15 @@
   window.addEventListener('scroll', () => {
     document.getElementById('header').classList.toggle('scrolled', window.scrollY > 100);
   });
+
+  // Gestion du formulaire Formspree
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+      const submitBtn = contactForm.querySelector('button[type="submit"]');
+      submitBtn.textContent = '⏳ Envoi en cours...';
+      submitBtn.disabled = true;
+    });
+  }
 </script>
 </body>
 </html>

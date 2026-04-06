@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Passion Sport - Nathan REBOURG</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #c8102e;
+      --dark: #0a0a0a;
+      --gray: #1e1e1e;
+      --gold: #c9a96e;
+      --light: #f5f5f5;
+      --dim: #b0b0b0;
+      --transition: all 0.4s ease;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--dark);
+      color: var(--light);
+      line-height: 1.7;
+    }
+    header {
+      position: fixed;
+      top: 0; left: 0; width: 100%;
+      z-index: 1000;
+      padding: 1.6rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10,10,10,0.95);
+      backdrop-filter: blur(12px);
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: white;
+      text-decoration: none;
+    }
+    .back-btn {
+      background: var(--primary);
+      color: white;
+      padding: 0.8rem 1.8rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+    .back-btn:hover {
+      background: #a00d24;
+      transform: translateY(-2px);
+    }
+    section {
+      padding: 12vh 5% 6vh;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      margin-top: 3rem;
+      margin-bottom: 2rem;
+      color: white;
+    }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-top: 3rem;
+      margin-bottom: 1.5rem;
+      color: var(--gold);
+    }
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      color: var(--light);
+      line-height: 1.8;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.8rem;
+      margin: 2.5rem 0;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 12px;
+      object-fit: cover;
+      height: 200px;
+      transition: var(--transition);
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 35px rgba(200,16,46,0.3);
+    }
+    .routine-card {
+      background: var(--gray);
+      border-left: 4px solid var(--primary);
+      border-radius: 12px;
+      padding: 2rem;
+      margin: 1.5rem 0;
+    }
+    .routine-card h3 {
+      color: var(--gold);
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+    .week-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .day-slot {
+      background: rgba(200,16,46,0.1);
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+    .day-slot strong {
+      color: var(--primary);
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+    footer {
+      text-align: center;
+      padding: 3rem;
+      color: var(--dim);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="../index.html" class="logo">← Retour</a>
+  <a href="../index.html" class="back-btn">Accueil</a>
+</header>
+
+<section>
+  <h1>💪 Passion Sport & Fitness</h1>
+  
+  <h2>Mon Engagement Sportif</h2>
+  <p>
+    Le sport n'est pas qu'une activité physique pour moi, c'est un style de vie. Je suis obsédé par 
+    la progression constante, l'amélioration continue et le dépassement de mes limites. "Progression 
+    over Perfection" est ma philosophie.
+  </p>
+
+  <h2>Routine Hebdomadaire 2026</h2>
+  
+  <div class="routine-card">
+    <h3>💪 Musculation</h3>
+    <p>
+      Le cœur de ma pratique. <strong>4-5 séances par semaine</strong> en salle de sport avec split program 
+      optimisé (push/pull/legs). Focus sur la progression des charges, hypertrophie musculaire et 
+      évolution physique visible.
+    </p>
+  </div>
+
+  <div class="routine-card">
+    <h3>🎾 Padel</h3>
+    <p>
+      Sport collectif explosif et technique. Développe l'agilité, les réflexes et l'esprit d'équipe. 
+      Je joue <strong>1-2 fois par semaine</strong> le soir pour relâcher du stress et profiter du social.
+    </p>
+  </div>
+
+  <div class="routine-card">
+    <h3>🏃 Course à Pied</h3>
+    <p>
+      Complément de la musculation pour développer l'endurance cardio et la capacité aérobique. 
+      <strong>1-2 sessions de running</strong> par semaine, mix de tempo runs et long runs le week-end.
+    </p>
+  </div>
+
+  <div class="routine-card">
+    <h3>📊 Nutrition Optimisée</h3>
+    <p>
+      Alimentation disciplinée et macros calculés. Tracking quotidien pour assurer surcharge 
+      progressive et gain musculaire. Suppléments : Whey, créatine, vitamines, oméga-3.
+    </p>
+  </div>
+
+  <h2>Planning Hebdomadaire Type</h2>
+  <div class="week-grid">
+    <div class="day-slot">
+      <strong>Lundi</strong>
+      Push (Chest/Épaules)
+    </div>
+    <div class="day-slot">
+      <strong>Mardi</strong>
+      Running (Tempo)
+    </div>
+    <div class="day-slot">
+      <strong>Mercredi</strong>
+      Pull (Back/Bras)
+    </div>
+    <div class="day-slot">
+      <strong>Jeudi</strong>
+      Padel
+    </div>
+    <div class="day-slot">
+      <strong>Vendredi</strong>
+      Legs (Jambes)
+    </div>
+    <div class="day-slot">
+      <strong>Samedi</strong>
+      Long Running
+    </div>
+    <div class="day-slot">
+      <strong>Dimanche</strong>
+      Repos / Stretching
+    </div>
+  </div>
+
+  <h2>Objectifs 2026</h2>
+  <p>
+    ✅ Atteindre <strong>+10kg de muscle sec</strong> maintenant via surplus calorique stratégique<br>
+    ✅ Développer un physique <strong>shredded</strong> (body fat 10-12%)<br>
+    ✅ Améliorer mon classement au padel (passer D3 → D2)<br>
+    ✅ Courir <strong>un semi-marathon</strong> (21km) en moins de 1h45<br>
+    ✅ Maintenir une discipline nutritionnelle <strong>85% du temps</strong><br>
+    ✅ Progresser sur tous les mouvements composés (squat, deadlift, bench press)
+  </p>
+
+  <h2>Galerie Sportive</h2>
+  <div class="gallery">
+    <img src="../assets/sport1.jpg" alt="Musculation salle" />
+    <img src="../assets/sport2.jpg" alt="Padel match" />
+    <img src="../assets/sport3.jpg" alt="Running nature" />
+    <img src="../assets/sport4.jpg" alt="Progression physique" />
+    <img src="../assets/sport5.jpg" alt="Challenge sportif" />
+    <img src="../assets/sport6.jpg" alt="Team padel" />
+  </div>
+
+  <h2>Citations Inspirantes</h2>
+  <p style="color: var(--dim); font-style: italic;">
+    <strong style="color: var(--gold);">"Discipline is the soul of champions"</strong> — Je ne vise pas la 
+    perfection physique, mais la progression constante et la maîtrise de mon corps.<br><br>
+    <strong style="color: var(--gold);">"No pain, no gain"</strong> — Chaque séance difficile me rapproche 
+    de mes objectifs 2026.
+  </p>
+</section>
+
+<footer>
+  © 2026 — Nathan REBOURG — Code, Performance & Passion Automobile
+</footer>
+
+</body>
+</html>

@@ -10,12 +10,11 @@
   <style>
     :root {
       --primary: #c8102e;
-      --dark: #0a0a0a;
-      --gray: #1e1e1e;
-      --gold: #c9a96e;
-      --light: #f5f5f5;
-      --dim: #b0b0b0;
-      --transition: all 0.4s ease;
+      --dark: #ffffff;
+      --gray: #f5f5f7;
+      --light: #1d1d1f;
+      --dim: #666666;
+      --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
     * { margin:0; padding:0; box-sizing:border-box; }
     html { scroll-behavior: smooth; }
@@ -33,14 +32,15 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(10,10,10,0.95);
+      background: rgba(255,255,255,0.85);
       backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,0.08);
     }
     .logo {
       font-family: 'Playfair Display', serif;
       font-size: 2rem;
       font-weight: 700;
-      color: white;
+      color: #1d1d1f;
       text-decoration: none;
     }
     .back-btn {
@@ -66,19 +66,19 @@
       font-size: 3.5rem;
       margin-top: 3rem;
       margin-bottom: 2rem;
-      color: white;
+      color: #1d1d1f;
     }
     h2 {
       font-family: 'Playfair Display', serif;
       font-size: 2rem;
       margin-top: 3rem;
       margin-bottom: 1.5rem;
-      color: var(--gold);
+      color: var(--primary);
     }
     p {
       font-size: 1.1rem;
       margin-bottom: 1.5rem;
-      color: var(--light);
+      color: var(--dim);
       line-height: 1.8;
     }
     .gallery {
@@ -87,16 +87,43 @@
       gap: 1.8rem;
       margin: 2.5rem 0;
     }
+    .gallery-item {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      transition: var(--transition);
+    }
     .gallery img {
       width: 100%;
       border-radius: 12px;
       object-fit: cover;
       height: 200px;
       transition: var(--transition);
+      display: block;
     }
-    .gallery img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 10px 35px rgba(200,16,46,0.3);
+    .gallery-item:hover img {
+      transform: scale(1.05) translateY(-4px);
+      box-shadow: 0 20px 50px rgba(200,16,46,0.2);
+    }
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(200,16,46,0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      font-weight: 600;
+      font-size: 1.05rem;
+      padding: 1.5rem;
+      border-radius: 12px;
+      opacity: 0;
+      transition: opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
     }
     .design-principle {
       background: var(--gray);
@@ -172,22 +199,42 @@
 
   <h2>Captures du site</h2>
   <div class="gallery">
-    <img src="../assets/site.png" alt="Accueil" />
-    <img src="../assets/css.png" alt="Projets" />
-    <img src="../assets/github.png" alt="Compétences" />
-    <img src="../assets/portfolio4.jpg" alt="Formulaire" />
-    <img src="../assets/portfolio5.jpg" alt="Responsive" />
-    <img src="../assets/portfolio6.jpg" alt="Mobile" />
+    <div class="gallery-item">
+      <img src="../assets/site.png" alt="Accueil du site" />
+      <div class="gallery-overlay">Accueil du site</div>
+    </div>
+    <div class="gallery-item">
+      <img src="../assets/css.png" alt="CSS et styling" />
+      <div class="gallery-overlay">CSS et styling</div>
+    </div>
+    <div class="gallery-item">
+      <img src="../assets/github.png" alt="GitHub repository" />
+      <div class="gallery-overlay">GitHub repository</div>
+    </div>
+    <div class="gallery-item">
+      <img src="../assets/prise_contact.png" alt="Formulaire de contact" />
+      <div class="gallery-overlay">Formulaire de contact</div>
+    </div>
+    <div class="gallery-item">
+      <img src="../assets/netifly.png" alt="Déploiement Netlify" />
+      <div class="gallery-overlay">Déploiement Netlify</div>
+    </div>
+    <div class="gallery-item">
+      <img src="../assets/mobile.jpeg" alt="Version mobile" />
+      <div class="gallery-overlay">Version mobile</div>
+    </div>
   </div>
 
   <h2>Évolutions Futures</h2>
   <p>
-    🚀 Ajouter Three.js pour effets 3D<br>
-    🚀 Intégrer un CMS (Contentful ou Sanity)<br>
-    🚀 Mode dark/light avec toggle<br>
-    🚀 Analytics & tracking utilisateur<br>
-    🚀 Blog section avec articles<br>
-    🚀 Intégration YouTube API
+    🚀 Three.js pour effets 3D interactifs (scène 3D au hero)<br>
+    🚀 Mode dark/light avec toggle persistant<br>
+    🚀 Blog section avec articles et catégories<br>
+    🚀 CMS (Contentful ou Sanity) pour gestion de contenu<br>
+    🚀 Analytics avancé (Plausible ou Fathom)<br>
+    🚀 Optimisation SEO poussée & Rich Snippets<br>
+    🚀 PWA (Progressive Web App) avec offline mode<br>
+    🚀 Chat widget AI pour interactions visitor
   </p>
 </section>
 

@@ -10,12 +10,11 @@
   <style>
     :root {
       --primary: #c8102e;
-      --dark: #0a0a0a;
-      --gray: #1e1e1e;
-      --gold: #c9a96e;
-      --light: #f5f5f5;
-      --dim: #b0b0b0;
-      --transition: all 0.4s ease;
+      --dark: #ffffff;
+      --gray: #f5f5f7;
+      --light: #1d1d1f;
+      --dim: #666666;
+      --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
     * { margin:0; padding:0; box-sizing:border-box; }
     html { scroll-behavior: smooth; }
@@ -33,14 +32,15 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(10,10,10,0.95);
+      background: rgba(255,255,255,0.85);
       backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,0.08);
     }
     .logo {
       font-family: 'Playfair Display', serif;
       font-size: 2rem;
       font-weight: 700;
-      color: white;
+      color: #1d1d1f;
       text-decoration: none;
     }
     .back-btn {
@@ -66,19 +66,19 @@
       font-size: 3.5rem;
       margin-top: 3rem;
       margin-bottom: 2rem;
-      color: white;
+      color: #1d1d1f;
     }
     h2 {
       font-family: 'Playfair Display', serif;
       font-size: 2rem;
       margin-top: 3rem;
       margin-bottom: 1.5rem;
-      color: var(--gold);
+      color: var(--primary);
     }
     p {
       font-size: 1.1rem;
       margin-bottom: 1.5rem;
-      color: var(--light);
+      color: var(--dim);
       line-height: 1.8;
     }
     .gallery {
@@ -93,10 +93,72 @@
       object-fit: cover;
       height: 200px;
       transition: var(--transition);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     }
     .gallery img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 10px 35px rgba(200,16,46,0.3);
+      transform: scale(1.05) translateY(-4px);
+      box-shadow: 0 20px 50px rgba(200,16,46,0.2);
+    }
+    .video-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 120%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      transition: var(--transition);
+    }
+    .video-container:hover {
+      box-shadow: 0 20px 50px rgba(200,16,46,0.2);
+      transform: translateY(-4px);
+    }
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 12px;
+    }
+    .video-link {
+      display: block;
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      transition: var(--transition);
+    }
+    .video-link:hover {
+      box-shadow: 0 20px 50px rgba(200,16,46,0.2);
+      transform: translateY(-4px);
+    }
+    .video-link img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .play-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60px;
+      height: 60px;
+      background: rgba(200,16,46,0.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      transition: var(--transition);
+      z-index: 2;
+    }
+    .video-link:hover .play-button {
+      background: #c8102e;
+      transform: translate(-50%, -50%) scale(1.1);
     }
     .stat-box {
       background: var(--gray);
@@ -135,7 +197,7 @@
   </p>
   
   <div class="stat-box">
-    <div class="stat-number">15 000+</div>
+    <div class="stat-number">17 000+</div>
     <p>Abonnés</p>
   </div>
   
@@ -145,7 +207,7 @@
   </div>
   
   <div class="stat-box">
-    <div class="stat-number">20M+</div>
+    <div class="stat-number">30M+</div>
     <p>Vues totales</p>
   </div>
 
@@ -159,12 +221,30 @@
 
   <h2>Galerie vidéos</h2>
   <div class="gallery">
-    <img src="../assets/youtube1.jpg" alt="Vidéo 1" />
-    <img src="../assets/youtube2.jpg" alt="Vidéo 2" />
-    <img src="../assets/youtube3.jpg" alt="Vidéo 3" />
-    <img src="../assets/youtube4.jpg" alt="Vidéo 4" />
-    <img src="../assets/youtube5.jpg" alt="Vidéo 5" />
-    <img src="../assets/youtube6.jpg" alt="Vidéo 6" />
+    <a href="https://www.youtube.com/shorts/RIG7T2L3Oug" target="_blank" class="video-link">
+      <img src="https://img.youtube.com/vi/RIG7T2L3Oug/mqdefault.jpg" alt="YouTube Short 1" />
+      <div class="play-button">▶</div>
+    </a>
+    <a href="https://www.youtube.com/shorts/aEctx_xH75c" target="_blank" class="video-link">
+      <img src="https://img.youtube.com/vi/aEctx_xH75c/mqdefault.jpg" alt="YouTube Short 2" />
+      <div class="play-button">▶</div>
+    </a>
+    <a href="https://www.youtube.com/shorts/LnnROmANEYQ" target="_blank" class="video-link">
+      <img src="https://img.youtube.com/vi/LnnROmANEYQ/mqdefault.jpg" alt="YouTube Short 3" />
+      <div class="play-button">▶</div>
+    </a>
+    <a href="https://www.youtube.com/shorts/37wNA-JkTOE" target="_blank" class="video-link">
+      <img src="https://img.youtube.com/vi/37wNA-JkTOE/mqdefault.jpg" alt="YouTube Short 4" />
+      <div class="play-button">▶</div>
+    </a>
+    <a href="https://www.youtube.com/shorts/jsjGwKLaY3Q" target="_blank" class="video-link">
+      <img src="https://img.youtube.com/vi/jsjGwKLaY3Q/mqdefault.jpg" alt="YouTube Short 5" />
+      <div class="play-button">▶</div>
+    </a>
+    <a href="https://www.youtube.com/shorts/kvHSgM8qQHg" target="_blank" class="video-link">
+      <img src="https://img.youtube.com/vi/kvHSgM8qQHg/mqdefault.jpg" alt="YouTube Short 6" />
+      <div class="play-button">▶</div>
+    </a>
   </div>
 
   <h2>Impact & Collaboration</h2>

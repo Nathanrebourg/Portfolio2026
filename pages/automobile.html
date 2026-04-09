@@ -10,12 +10,11 @@
   <style>
     :root {
       --primary: #c8102e;
-      --dark: #0a0a0a;
-      --gray: #1e1e1e;
-      --gold: #c9a96e;
-      --light: #f5f5f5;
-      --dim: #b0b0b0;
-      --transition: all 0.4s ease;
+      --dark: #ffffff;
+      --gray: #f5f5f7;
+      --light: #1d1d1f;
+      --dim: #666666;
+      --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
     * { margin:0; padding:0; box-sizing:border-box; }
     html { scroll-behavior: smooth; }
@@ -33,14 +32,15 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(10,10,10,0.95);
+      background: rgba(255,255,255,0.85);
       backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,0.08);
     }
     .logo {
       font-family: 'Playfair Display', serif;
       font-size: 2rem;
       font-weight: 700;
-      color: white;
+      color: #1d1d1f;
       text-decoration: none;
     }
     .back-btn {
@@ -66,19 +66,19 @@
       font-size: 3.5rem;
       margin-top: 3rem;
       margin-bottom: 2rem;
-      color: white;
+      color: #1d1d1f;
     }
     h2 {
       font-family: 'Playfair Display', serif;
       font-size: 2rem;
       margin-top: 3rem;
       margin-bottom: 1.5rem;
-      color: var(--gold);
+      color: var(--primary);
     }
     p {
       font-size: 1.1rem;
       margin-bottom: 1.5rem;
-      color: var(--light);
+      color: var(--dim);
       line-height: 1.8;
     }
     .gallery {
@@ -123,6 +123,26 @@
       background: rgba(200,16,46,0.1);
       border-radius: 6px;
       border-left: 3px solid var(--primary);
+    }
+    .video-container {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      margin: 2.5rem auto;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+      transition: var(--transition);
+    }
+    .video-container:hover {
+      box-shadow: 0 30px 80px rgba(200,16,46,0.25);
+      transform: translateY(-4px);
+    }
+    .video-container video {
+      width: 100%;
+      height: auto;
+      display: block;
+      background: #000;
     }
     footer {
       text-align: center;
@@ -169,8 +189,7 @@
 
   <h2>Influenceur auto préféré</h2>
   <p>
-    Ma source d’inspiration et d’influenceur auto, c’est <strong>GMK</strong> (Gunn, Matteus, Kevin), avec son travail de modélisation 3D, 
-    analyses de setup, style visuel et les détails techniques hyper-qualitatifs. Leur contenu accompagne ma culture auto et mes objectifs.
+    Ma source d’inspiration et d’influenceur auto, c’est <strong>GMK</strong> (Georges Maroon Kikano), un celebre vidéaste dont le but est de partager sa passion automobile avec sa communauté. Leur contenu accompagne ma culture auto et mes objectifs.
   </p>
 
   <h2>Visions & objectif</h2>
@@ -181,6 +200,15 @@
   </p>
 
   <h2>Galerie et souvenirs</h2>
+  
+  <div class="video-container">
+    <video controls controlsList="nodownload" style="width:100%; height:auto; background:#000;">
+      <source src="../assets/VIDEO_GT4RS.mov" type="video/quicktime">
+      <source src="../assets/VIDEO_GT4RS.mov" type="video/mp4">
+      <p>Votre navigateur ne supporte pas la balise vidéo. <a href="../assets/VIDEO_GT4RS.mov" download>Téléchargez la vidéo</a></p>
+    </video>
+  </div>
+
   <div class="gallery">
     <img src="../assets/GT4RS.jpg" alt="Porsche GT4RS" />
     <img src="../assets/mx5.jpg" alt="Mazda MX5" />

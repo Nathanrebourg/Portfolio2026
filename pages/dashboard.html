@@ -10,12 +10,11 @@
   <style>
     :root {
       --primary: #c8102e;
-      --dark: #0a0a0a;
-      --gray: #1e1e1e;
-      --gold: #c9a96e;
-      --light: #f5f5f5;
-      --dim: #b0b0b0;
-      --transition: all 0.4s ease;
+      --dark: #ffffff;
+      --gray: #f5f5f7;
+      --light: #1d1d1f;
+      --dim: #666666;
+      --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
     * { margin:0; padding:0; box-sizing:border-box; }
     html { scroll-behavior: smooth; }
@@ -33,14 +32,15 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(10,10,10,0.95);
+      background: rgba(255,255,255,0.85);
       backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,0.08);
     }
     .logo {
       font-family: 'Playfair Display', serif;
       font-size: 2rem;
       font-weight: 700;
-      color: white;
+      color: #1d1d1f;
       text-decoration: none;
     }
     .back-btn {
@@ -66,19 +66,19 @@
       font-size: 3.5rem;
       margin-top: 3rem;
       margin-bottom: 2rem;
-      color: white;
+      color: #1d1d1f;
     }
     h2 {
       font-family: 'Playfair Display', serif;
       font-size: 2rem;
       margin-top: 3rem;
       margin-bottom: 1.5rem;
-      color: var(--gold);
+      color: var(--primary);
     }
     p {
       font-size: 1.1rem;
       margin-bottom: 1.5rem;
-      color: var(--light);
+      color: var(--dim);
       line-height: 1.8;
     }
     .gallery {
@@ -93,10 +93,11 @@
       object-fit: cover;
       height: 200px;
       transition: var(--transition);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     }
     .gallery img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 10px 35px rgba(200,16,46,0.3);
+      transform: scale(1.05) translateY(-4px);
+      box-shadow: 0 20px 50px rgba(200,16,46,0.2);
     }
     .tech-stack {
       display: grid;
@@ -141,63 +142,88 @@
 </header>
 
 <section>
-  <h1>📊 Dashboard Entreprise</h1>
+  <h1>📱 App Course d'Orientation IUT</h1>
   
   <h2>À propos du projet</h2>
   <p>
-    Application web interne développée pour faciliter la visualisation et l'analyse des données 
-    d'entreprise. Cet outil de décisionnel offre une interface intuitive et réactive pour suivre 
-    les métriques clés en temps réel.
+    <strong>Projet IUT fonctionnel et déployé ✅</strong><br>
+    Application mobile et web complète pour une course d'orientation. Nous avons développé une solution iOS/Android 
+    qui communique avec un serveur backend connecté à TTN (The Things Network) en LoRaWAN. 
+    Les données de géolocalisation et des capteurs sont récupérées en temps réel et affichées sur une interface web intuitive.
   </p>
 
   <h2>Stack Technologique</h2>
   <div class="tech-stack">
-    <div class="tech-item">React 18.2</div>
-    <div class="tech-item">Chart.js</div>
+    <div class="tech-item">iOS (Swift)</div>
+    <div class="tech-item">Android (Kotlin)</div>
+    <div class="tech-item">React.js</div>
     <div class="tech-item">Node.js / Express</div>
-    <div class="tech-item">MongoDB</div>
-    <div class="tech-item">Tailwind CSS</div>
-    <div class="tech-item">REST API</div>
-    <div class="tech-item">JWT Auth</div>
-    <div class="tech-item">Responsive Design</div>
+    <div class="tech-item">LoRaWAN / TTN</div>
+    <div class="tech-item">PostgreSQL</div>
+    <div class="tech-item">Geolocalisation GPS</div>
+    <div class="tech-item">API REST</div>
   </div>
 
   <h2>Fonctionnalités principales</h2>
   <div class="feature-box">
-    <h3>📈 Graphiques & Visualisation</h3>
-    <p>Graphiques interactifs avec Chart.js pour analyser les tendances, le chiffre d'affaires, 
-    les performances client et projections futures.</p>
+    <h3>📱 Applications Mobile (iOS & Android)</h3>
+    <p>Applications natives avec géolocalisation GPS en temps réel. Les coureurs peuvent tracker leur position 
+    et recevoir des waypoints de la course directement sur leur téléphone.</p>
   </div>
   <div class="feature-box">
-    <h3>🔐 Authentification Sécurisée</h3>
-    <p>Système de login avec JWT, sessions utilisateur et gestion des droits d'accès par rôle 
-    (admin, manager, employé).</p>
+    <h3>📡 Communication LoRaWAN / TTN</h3>
+    <p>Serveur backend connecté à The Things Network en LoRaWAN. Récupération des données de capteurs 
+    et envoi de commandes sans consommation excessive de batterie. Portée étendue et fiabilité.</p>
   </div>
   <div class="feature-box">
-    <h3>⚡ Performance & Temps réel</h3>
-    <p>Mise à jour automatique des données, cache optimisé et requêtes API asynchrones pour 
-    une expérience fluide.</p>
+    <h3>🗺️ Dashboard Web Temps Réel</h3>
+    <p>Interface web affichant la position de tous les coureurs en direct, les temps, les classements 
+    et les données collectées par les capteurs LoRaWAN.</p>
   </div>
   <div class="feature-box">
-    <h3>📱 Responsive Total</h3>
-    <p>Fonctionne parfaitement sur desktop, tablette et mobile avec interface adaptable.</p>
+    <h3>⚙️ Architecture Complète</h3>
+    <p>Stack complet du mobile au serveur: applications natives, backend API, base de données, 
+    intégration IoT et dashboard de visualisation.</p>
   </div>
 
   <h2>Captures d'écran & Démo</h2>
   <div class="gallery">
-    <img src="../assets/dashboard1.jpg" alt="Dashboard 1" />
-    <img src="../assets/dashboard2.jpg" alt="Dashboard 2" />
-    <img src="../assets/dashboard3.jpg" alt="Dashboard 3" />
-    <img src="../assets/dashboard4.jpg" alt="Dashboard 4" />
-    <img src="../assets/dashboard5.jpg" alt="Dashboard 5" />
-    <img src="../assets/dashboard6.jpg" alt="Dashboard 6" />
+    <img src="../assets/arduino.png" alt="Dashboard 1" />
+    <img src="../assets/serveur_node.png" alt="Dashboard 2" />
+    <img src="../assets/proxy_inversé.png" alt="Dashboard 3" />
+    <img src="../assets/app_vue_and.png" alt="Dashboard 4" />
+    <img src="../assets/app_and.png" alt="Dashboard 5" />
+    <img src="../assets/app_apple.png" alt="Dashboard 6" />
+  </div>
+
+  <h2>🚀 Projets Futurs en Pipeline</h2>
+  
+  <div class="feature-box">
+    <h3>📺 App YouTube Automation</h3>
+    <p>Application intelligente qui découpe automatiquement mes streams en clips optimisés. 
+    Édition intelligente, sous-titres générés, miniatures créées automatiquement, publication 
+    programmée et distribution multi-plateforme. Gain de temps énorme et productivité décuplée.</p>
+  </div>
+  
+  <div class="feature-box">
+    <h3>🤖 Bot Achat-Revente Intelligent</h3>
+    <p>Bot détecteur de bonnes affaires qui scanne les annonces, repère les opportunités rentables 
+    et remonte les pépites directement dans une app mobile. Alertes en temps réel, analyse du ROI 
+    potentiel et gestion d'une watchlist personnalisée.</p>
+  </div>
+  
+  <div class="feature-box">
+    <h3>📊 Dashboard Personnel de Business Optimization</h3>
+    <p>Application complète pour gérer et optimiser mes différents business streams: YouTube, 
+    achat-revente, projets clients, performance financière. Centralisé, analitique avancée 
+    et automation des tâches répétitives.</p>
   </div>
 
   <h2>Résultats & Impact</h2>
   <p>
-    Ce dashboard a permis à l'équipe management de gagner <strong>3-4 heures par semaine</strong> 
-    en automatisant le reporting. Les décisions données sont maintenant basées sur des données 
-    à jour et des visualisations claires.
+    Le projet IUT a démontré faisabilité complète d'une solution IoT embarquée. Avec les projets futurs, 
+    je vais automatiser mes business streams et créer des outils qui vont décupler ma productivité. 
+    Mon vision: <strong>automation, efficiency & scalability</strong> 🎯
   </p>
 </section>
 

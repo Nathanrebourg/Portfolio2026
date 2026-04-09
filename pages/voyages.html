@@ -10,12 +10,13 @@
   <style>
     :root {
       --primary: #c8102e;
-      --dark: #0a0a0a;
-      --gray: #1e1e1e;
+      --dark: #ffffff;
+      --gray: #f5f5f7;
+      --gray-dark: #e5e5e7;
       --gold: #c9a96e;
-      --light: #f5f5f5;
-      --dim: #b0b0b0;
-      --transition: all 0.4s ease;
+      --light: #1d1d1f;
+      --dim: #666666;
+      --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
     * { margin:0; padding:0; box-sizing:border-box; }
     html { scroll-behavior: smooth; }
@@ -33,14 +34,15 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(10,10,10,0.95);
+      background: rgba(255,255,255,0.85);
       backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,0.08);
     }
     .logo {
       font-family: 'Playfair Display', serif;
       font-size: 2rem;
       font-weight: 700;
-      color: white;
+      color: #1d1d1f;
       text-decoration: none;
     }
     .back-btn {
@@ -66,19 +68,19 @@
       font-size: 3.5rem;
       margin-top: 3rem;
       margin-bottom: 2rem;
-      color: white;
+      color: #1d1d1f;
     }
     h2 {
       font-family: 'Playfair Display', serif;
       font-size: 2rem;
       margin-top: 3rem;
       margin-bottom: 1.5rem;
-      color: var(--gold);
+      color: var(--primary);
     }
     p {
       font-size: 1.1rem;
       margin-bottom: 1.5rem;
-      color: var(--light);
+      color: var(--dim);
       line-height: 1.8;
     }
     .gallery {
@@ -87,23 +89,57 @@
       gap: 1.8rem;
       margin: 2.5rem 0;
     }
+    .gallery-item {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      transition: var(--transition);
+    }
     .gallery img {
       width: 100%;
       border-radius: 12px;
       object-fit: cover;
       height: 200px;
       transition: var(--transition);
+      display: block;
     }
-    .gallery img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 10px 35px rgba(200,16,46,0.3);
+    .gallery-item:hover img {
+      transform: scale(1.05) translateY(-4px);
+      box-shadow: 0 20px 50px rgba(200,16,46,0.2);
+    }
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(200,16,46,0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      font-weight: 600;
+      font-size: 1.05rem;
+      padding: 1.5rem;
+      border-radius: 12px;
+      opacity: 0;
+      transition: opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
     }
     .destination-card {
-      background: var(--gray);
-      border: 2px solid rgba(201,169,110,0.2);
+      background: rgba(245,245,247,0.7);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(0,0,0,0.08);
       border-radius: 12px;
       padding: 2rem;
       margin: 1.5rem 0;
+      transition: var(--transition);
+    }
+    .destination-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+      background: rgba(255,255,255,0.9);
     }
     .destination-card h3 {
       color: var(--primary);
@@ -119,9 +155,10 @@
     }
     .location-info div {
       padding: 0.8rem;
-      background: rgba(200,16,46,0.08);
-      border-left: 3px solid var(--gold);
+      background: rgba(200,16,46,0.05);
+      border-left: 3px solid var(--primary);
       border-radius: 4px;
+      color: var(--dim);
     }
     .bucketlist {
       display: flex;
@@ -130,18 +167,25 @@
       margin: 1.5rem 0;
     }
     .bucketlist-item {
-      background: rgba(200,16,46,0.15);
-      border: 1px solid var(--primary);
+      background: rgba(200,16,46,0.08);
+      border: 1px solid rgba(200,16,46,0.3);
       padding: 0.8rem 1.2rem;
       border-radius: 20px;
       font-size: 0.95rem;
       color: var(--light);
+      transition: var(--transition);
+    }
+    .bucketlist-item:hover {
+      background: var(--primary);
+      color: white;
+      transform: translateY(-2px);
     }
     footer {
       text-align: center;
       padding: 3rem;
       color: var(--dim);
       font-size: 0.9rem;
+      border-top: 1px solid rgba(0,0,0,0.08);
     }
   </style>
 </head>
@@ -157,104 +201,168 @@
   
   <h2>Mon Amour des Voyages</h2>
   <p>
-    Les voyages sont pour moi une source inépuisable d'inspiration et d'expériences. J'aime explorer 
-    de nouvelles cultures, goûter des cuisines authentiques, rouler sur des routes sublimes et 
-    découvrir des paysages à couper le souffle. Road-trips épiques et aventures mémorables.
+    Les voyages sont ma passion. J'aime explorer de nouvelles horizons, découvrir des cultures variées, 
+    emprunter les plus belles routes d'Europe, goûter des cuisines d'exception et créer des souvenirs 
+    inoubliables. De la montagne à la mer, de l'Allemagne à la Méditerranée, du ski à la gastronomie — 
+    chaque voyage enrichit mon expérience de vie.
   </p>
 
   <h2>Destinations Favorites</h2>
   
   <div class="destination-card">
-    <h3>🏔️ Les Alpes Françaises</h3>
+    <h3>�️ La Réunion — L'Incroyable</h3>
     <p>
-      Les Alpes offrent les plus bellas routes d'Europe : Chamonix, Annecy, Courchevel. 
-      Paysages montagneux sublimes, circuits routiers légendaires, et chalets cozy. Road-trip 
-      parfait pour tester une sportive sur des courbes époustouflantes.
+      Une destination d'exception qui m'a marqué. Paysages volcaniques incontournables, 
+      biodiversité tropicale extraordinaire, cultures riches et diversité humaine. Une expérience 
+      qui restera gravée à jamais.
     </p>
     <div class="location-info">
-      <div>🚗 Durée : 5-7j</div>
-      <div>⛺ Saison : Juin-Sept</div>
-      <div>🍷 Gastronomie : ⭐⭐⭐⭐⭐</div>
-      <div>📸 Photos : Sublime</div>
+      <div>✈️ Distance : Très lointain</div>
+      <div>🌴 Paysages : Unique</div>
+      <div>🌅 Découverte : Totale</div>
+      <div>💫 Ressenti : Incroyable</div>
     </div>
   </div>
 
   <div class="destination-card">
-    <h3>🇮🇹 Côte Amalfitaine (Italie)</h3>
+    <h3>🇩🇪 Allemagne — Road-Trip Découverte</h3>
     <p>
-      Route panoramique mythique en Campanie. Villes côtières colorées (Positano, Amalfi), 
-      routes sinueuses audacieuses, et pizza/limoncello authentiques. La Dolce Vita au complet.
+      Plusieurs visites inoubliables à travers l'Allemagne : Dortmund et ses grandes routes, 
+      Salzkotten avec ses routes pittoresques, Willigen avec le pont suspendu spectaculaire, 
+      et Paderborn pour assister à l'inauguration du nouvel aéroport. Atmosphère allemande 
+      authentique, précision routière et hospitalité.
     </p>
     <div class="location-info">
-      <div>🚗 Durée : 7-10j</div>
-      <div>⛺ Saison : Avr-Oct</div>
-      <div>🍝 Gastronomie : ⭐⭐⭐⭐⭐</div>
-      <div>🌊 Mer : Magnifique</div>
+      <div>🚗 Villes : Multiples</div>
+      <div>🌉 Événements : Historiques</div>
+      <div>🛣️ Routes : Excellentes</div>
+      <div>🇩🇪 Ambiance : Authentique</div>
     </div>
   </div>
 
   <div class="destination-card">
-    <h3>🇪🇸 Catalogne & Costa Brava (Espagne)</h3>
+    <h3>🇫🇷 Sud de la France — Méditerranée</h3>
     <p>
-      Barcelone, Gérone, routes côtières. Circuits de renommée mondiale (Spa-Francorchamps 
-      à proximité), plages paradisiaques, architecture gaudi, et tapas concessions.
+      La côte méditerranéenne française m'appelle régulièrement : Nice avec ses promenades côtières, 
+      Fréjus et son charme antique, Gruissan et sa côte sauvage, Saint-Pierre-de-la-Mer avec ses 
+      petites plages tranquilles. Soleil, mer turquoise, gastronomie locale et routes côtières 
+      panoramiques.
     </p>
     <div class="location-info">
-      <div>🚗 Durée : 5-7j</div>
-      <div>⛺ Saison : Avr-Juin</div>
-      <div>🍖 Gastronomie : ⭐⭐⭐⭐</div>
-      <div>🏖️ Plages : Top</div>
+      <div>🌊 Côtes : Sublimes</div>
+      <div>☀️ Climat : Parfait</div>
+      <div>🍽️ Gastronomie : ⭐⭐⭐⭐</div>
+      <div>🏖️ Relaxation : Totale</div>
     </div>
   </div>
 
-  <divdestination-card>
-    <h3>🇨🇭 Suisse Lémanique (Objectif 2026+)</h3>
+  <div class="destination-card">
+    <h3>🏔️ Les Alpes Françaises — Montagne & Ski</h3>
     <p>
-      Mon objectif professionnel pour travailler comme développeur frontalier. Région magnifique 
-      avec Genève, Lausanne, routes alpines sublimes, et proximité directe des meilleurs circuits 
-      d'Europe (Nürburgring, Spa-Francorchamps, Monza).
+      Plusieurs stations de montagne me fascinent : Risoul et ses vues panoramiques, 
+      Les Orres avec ses domaines skiables, Les Carroz-d'Arâches pour des journées de ski inoubliables. 
+      Routes alpines sinueuses, paysages spectaculaires, et adrénaline garantie.
     </p>
     <div class="location-info">
-      <div>🏘️ Région : Lémanique</div>
-      <div>🏔️ Nature : Sublime</div>
-      <div>💼 Taff : Oui</div>
-      <div>🏁 Circuits : À côté</div>
+      <div>⛷️ Saison : Hiver/Été</div>
+      <div>🏔️ Altitude : 2000m+</div>
+      <div>🚗 Routes : Époustouflantes</div>
+      <div>📸 Paysages : Mythiques</div>
+    </div>
+  </div>
+
+  <div class="destination-card">
+    <h3>🍽️ Restaurants Gastronomiques & Brasseries Bocuses</h3>
+    <p>
+      Au-delà des routes, les vrais voyages passent par la gastronomie. Je suis un fervent 
+      admirateur de l'héritage du Chef Paul Bocuse. Les restaurants étoilés et les brasseries 
+      Bocuses sont des destinations en soi — temples de la tradition française, innovation culinaire, 
+      et passion du bien-manger. Chaque repas est une aventure.
+    </p>
+    <div class="location-info">
+      <div>⭐ Distinction : Michelin</div>
+      <div>👨‍🍳 Chef : Excellence</div>
+      <div>🍷 Accords : Parfaits</div>
+      <div>🏆 Tradition : Incontournable</div>
     </div>
   </div>
 
   <h2>Expériences Culinaires</h2>
   <p>
-    Découvrir un lieu, c'est d'abord découvrir sa nourriture. J'adore :
+    Pour moi, voyager c'est aussi (et surtout) découvrir la gastronomie locale. J'adore :
   </p>
   <div class="bucketlist">
+    <div class="bucketlist-item">⭐ Restaurants étoilés Michelin</div>
+    <div class="bucketlist-item">🍽️ Brasseries Bocuse authentiques</div>
     <div class="bucketlist-item">🍷 Dégustations vignobles français</div>
-    <div class="bucketlist-item">🍝 Authentique pâtes fraîches Italie</div>
     <div class="bucketlist-item">🍤 Fruits de mer Méditerranée</div>
-    <div class="bucketlist-item">🧀 Fromages régionaux Alpes</div>
-    <div class="bucketlist-item">🥗 Gastronomie méditerranéenne</div>
-    <div class="bucketlist-item">🍞 Boulangerie artisanale</div>
-    <div class="bucketlist-item">⚽ Street food urbain</div>
-    <div class="bucketlist-item">🍰 Desserts locaux</div>
+    <div class="bucketlist-item">🧀 Fromages régionaux français</div>
+    <div class="bucketlist-item">🥘 Spécialités régionales locales</div>
+    <div class="bucketlist-item">🍰 Pâtisseries artisanales</div>
+    <div class="bucketlist-item">👨‍🍳 Gastronomie d'excellence</div>
   </div>
 
   <h2>Bucket List Voyages</h2>
   <p>
-    ✈️ <strong>Monaco</strong> — Grand Prix F1 + Luxe urbain<br>
+    Destinations et expériences que je rêve de vivre :<br>
+    ✈️ <strong>Japon</strong> — Gastronomie, culture, paysages contrastés<br>
     ✈️ <strong>Nürburgring Track Day</strong> — Conduire une Porsche sur le circuit légendaire<br>
-    ✈️ <strong>Japon</strong> — Gastronomie, paysages, culture<br>
     ✈️ <strong>Canada / Rocky Mountains</strong> — Road-trip nature épique<br>
     ✈️ <strong>Islande</strong> — Cascades, geysers, routes désertiques<br>
     ✈️ <strong>Circuit Spa-Francorchamps</strong> — Vivre un événement motorsport<br>
+    ✈️ <strong>Monaco</strong> — Grand Prix F1 + Luxe urbain<br>
   </p>
 
   <h2>Galerie de Voyages</h2>
   <div class="gallery">
-    <img src="../assets/travel1.jpg" alt="Road-trip Alpes" />
-    <img src="../assets/travel2.jpg" alt="Paysages montagneux" />
-    <img src="../assets/travel3.jpg" alt="Gastronomie locale" />
-    <img src="../assets/travel4.jpg" alt="Côte méditerranéenne" />
-    <img src="../assets/travel5.jpg" alt="Aventure du jour" />
-    <img src="../assets/travel6.jpg" alt="Coucher de soleil voyage" />
+    <div class="gallery-item">
+      <img src="../assets/reunion.jpg" alt="La Réunion" />
+      <div class="gallery-overlay">La Réunion</div>
+    </div>
+    <div class="gallery-item">
+      <img src="../assets/reunion2.jpg" alt="Paysages Réunion" />
+      <div class="gallery-overlay">Paysages Réunion</div>
+    </div>
+    <div class="gallery-item">
+      <img src="../assets/reunion3.jpg" alt="Couleurs tropicales" />
+      <div class="gallery-overlay">Couleurs tropicales</div>
+    </div>
+    <div class="gallery-item">
+      <img src="../assets/reunion4.jpg" alt="Moments Réunion" />
+      <div class="gallery-overlay">Moments Réunion</div>
+    </div>
+    <div class="gallery-item">
+      <img src="../assets/paysage-allemangne.jpg" alt="Routes d'Allemagne" />
+      <div class="gallery-overlay">Routes d'Allemagne</div>
+    </div>
+    <div class="gallery-item">
+      <img src="../assets/paysage_mer.jpg" alt="Côte méditerranéenne" />
+      <div class="gallery-overlay">Côte méditerranéenne</div>
+    </div>
+    <div class="gallery-item">
+      <img src="../assets/paysage-risoul.jpg" alt="Montagne - Risoul" />
+      <div class="gallery-overlay">Montagne - Risoul</div>
+    </div>
+    <div class="gallery-item">
+      <img src="../assets/paysage_roanne.jpg" alt="paysages-roannais" />
+      <div class="gallery-overlay">Paysages roannais</div>
+    </div>
+    <div class="gallery-item">
+      <img src="../assets/alpines.jpg" alt="Montagne rassemblement de vehicules" />
+      <div class="gallery-overlay">Montagne rassemblement de vehicules</div>
+    </div>
+    <div class="gallery-item">
+      <img src="../assets/resto-gastro.jpg" alt="Restaurant gastronomique" />
+      <div class="gallery-overlay">Restaurant gastronomique</div>
+    </div>
+    <div class="gallery-item">
+      <img src="../assets/bocuse.jpg" alt="Brasserie Bocuse" />
+      <div class="gallery-overlay">Brasserie Bocuse</div>
+    </div>
+    <div class="gallery-item">
+      <img src="../assets/ski.jpg" alt="Ski aux Alpes" />
+      <div class="gallery-overlay">Ski aux Alpes</div>
+    </div>
   </div>
 
   <h2>Mon Philosophie de Voyage</h2>

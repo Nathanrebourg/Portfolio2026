@@ -10,12 +10,11 @@
   <style>
     :root {
       --primary: #c8102e;
-      --dark: #0a0a0a;
-      --gray: #1e1e1e;
-      --gold: #c9a96e;
-      --light: #f5f5f5;
-      --dim: #b0b0b0;
-      --transition: all 0.4s ease;
+      --dark: #ffffff;
+      --gray: #f5f5f7;
+      --light: #1d1d1f;
+      --dim: #666666;
+      --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
     * { margin:0; padding:0; box-sizing:border-box; }
     html { scroll-behavior: smooth; }
@@ -33,14 +32,15 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(10,10,10,0.95);
+      background: rgba(255,255,255,0.85);
       backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,0.08);
     }
     .logo {
       font-family: 'Playfair Display', serif;
       font-size: 2rem;
       font-weight: 700;
-      color: white;
+      color: #1d1d1f;
       text-decoration: none;
     }
     .back-btn {
@@ -66,19 +66,19 @@
       font-size: 3.5rem;
       margin-top: 3rem;
       margin-bottom: 2rem;
-      color: white;
+      color: #1d1d1f;
     }
     h2 {
       font-family: 'Playfair Display', serif;
       font-size: 2rem;
       margin-top: 3rem;
       margin-bottom: 1.5rem;
-      color: var(--gold);
+      color: var(--primary);
     }
     p {
       font-size: 1.1rem;
       margin-bottom: 1.5rem;
-      color: var(--light);
+      color: var(--dim);
       line-height: 1.8;
     }
     .gallery {
@@ -87,16 +87,43 @@
       gap: 1.8rem;
       margin: 2.5rem 0;
     }
+    .gallery-item {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      transition: var(--transition);
+    }
     .gallery img {
       width: 100%;
       border-radius: 12px;
       object-fit: cover;
       height: 200px;
       transition: var(--transition);
+      display: block;
     }
-    .gallery img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 10px 35px rgba(200,16,46,0.3);
+    .gallery-item:hover img {
+      transform: scale(1.08) translateY(-4px);
+      box-shadow: 0 20px 50px rgba(200,16,46,0.2);
+    }
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(200,16,46,0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      font-weight: 600;
+      font-size: 1.05rem;
+      padding: 1.5rem;
+      border-radius: 12px;
+      opacity: 0;
+      transition: opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
     }
     .routine-card {
       background: var(--gray);
@@ -104,6 +131,12 @@
       border-radius: 12px;
       padding: 2rem;
       margin: 1.5rem 0;
+      transition: var(--transition);
+    }
+    .routine-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 15px 40px rgba(200,16,46,0.15);
+      background: rgba(255,255,255,0.95);
     }
     .routine-card h3 {
       color: var(--gold);
@@ -122,6 +155,13 @@
       padding: 1rem;
       text-align: center;
       font-size: 0.95rem;
+      transition: var(--transition);
+      border: 1px solid rgba(200,16,46,0.2);
+    }
+    .day-slot:hover {
+      background: rgba(200,16,46,0.2);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(200,16,46,0.15);
     }
     .day-slot strong {
       color: var(--primary);
@@ -184,7 +224,7 @@
     <h3>📊 Nutrition Optimisée</h3>
     <p>
       Alimentation disciplinée et macros calculés. Tracking quotidien pour assurer surcharge 
-      progressive et gain musculaire. Suppléments : Whey, créatine, vitamines, oméga-3.
+      progressive et gain musculaire. Supplément : créatine pour la récupération et la retenue d'eau.
     </p>
   </div>
 
@@ -192,15 +232,15 @@
   <div class="week-grid">
     <div class="day-slot">
       <strong>Lundi</strong>
-      Push (Chest/Épaules)
+      Push (Chest/triceps)
     </div>
     <div class="day-slot">
       <strong>Mardi</strong>
-      Running (Tempo)
+      Epaules
     </div>
     <div class="day-slot">
       <strong>Mercredi</strong>
-      Pull (Back/Bras)
+      Pull (Back/Biceps)
     </div>
     <div class="day-slot">
       <strong>Jeudi</strong>
@@ -212,19 +252,19 @@
     </div>
     <div class="day-slot">
       <strong>Samedi</strong>
-      Long Running
+      Running
     </div>
     <div class="day-slot">
       <strong>Dimanche</strong>
-      Repos / Stretching
+      Repos
     </div>
   </div>
 
   <h2>Objectifs 2026</h2>
   <p>
     ✅ Atteindre <strong>+10kg de muscle sec</strong> maintenant via surplus calorique stratégique<br>
-    ✅ Développer un physique <strong>shredded</strong> (body fat 10-12%)<br>
-    ✅ Améliorer mon classement au padel (passer D3 → D2)<br>
+    ✅ Développer un physique <strong>tracé</strong> (body fat 10-12%)<br>
+    ✅ Améliorer mon niveau au padel<br>
     ✅ Courir <strong>un semi-marathon</strong> (21km) en moins de 1h45<br>
     ✅ Maintenir une discipline nutritionnelle <strong>85% du temps</strong><br>
     ✅ Progresser sur tous les mouvements composés (squat, deadlift, bench press)
@@ -232,20 +272,36 @@
 
   <h2>Galerie Sportive</h2>
   <div class="gallery">
-    <img src="../assets/sport1.jpg" alt="Musculation salle" />
-    <img src="../assets/sport2.jpg" alt="Padel match" />
-    <img src="../assets/sport3.jpg" alt="Running nature" />
-    <img src="../assets/sport4.jpg" alt="Progression physique" />
-    <img src="../assets/sport5.jpg" alt="Challenge sportif" />
-    <img src="../assets/sport6.jpg" alt="Team padel" />
+    <div class="gallery-item">
+      <img src="../assets/muscu.jpg" alt="Musculation salle" />
+      <div class="gallery-overlay">Musculation salle</div>
+    </div>
+    <div class="gallery-item">
+      <img src="../assets/athle.jpg" alt="Athlètisme" />
+      <div class="gallery-overlay">Athlètisme </div>
+    </div>
+    <div class="gallery-item">
+      <img src="../assets/Halle_Stéphane_Diagana.jpg" alt="Halle compétition" />
+      <div class="gallery-overlay">Halle compétition</div>
+    </div>
+    <div class="gallery-item">
+      <img src="../assets/ski.jpg" alt="ski" />
+      <div class="gallery-overlay">Ski</div>
+    </div>
+    <div class="gallery-item">
+      <img src="../assets/marathon.jpg" alt="Challenge sportif" />
+      <div class="gallery-overlay">Challenge sportif avec le marathon du beaujolais</div>
+    </div>
+    <div class="gallery-item">
+      <img src="../assets/paddle.webp" alt="Team padel" />
+      <div class="gallery-overlay">Team padel</div>
+    </div>
   </div>
 
   <h2>Citations Inspirantes</h2>
   <p style="color: var(--dim); font-style: italic;">
     <strong style="color: var(--gold);">"Discipline is the soul of champions"</strong> — Je ne vise pas la 
     perfection physique, mais la progression constante et la maîtrise de mon corps.<br><br>
-    <strong style="color: var(--gold);">"No pain, no gain"</strong> — Chaque séance difficile me rapproche 
-    de mes objectifs 2026.
   </p>
 </section>
 

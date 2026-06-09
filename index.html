@@ -565,6 +565,24 @@
       color: white;
       box-shadow: 0 15px 40px rgba(200,16,46,0.4);
     }
+
+    /* Animations (définitions manquantes : les éléments les référençaient sans qu'elles existent) */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideInLeft {
+      from { opacity: 0; transform: translateX(-40px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-12px); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; }
+    }
   </style>
 </head>
 <body>
@@ -600,10 +618,10 @@
   <h2>Parcours</h2>
   <div class="card">
     <p style="font-size:1.18rem; text-align:center; color:var(--dim);">
-      • Baccalauréat technologique (spécialités SIN)<br>
-      • BUT option ROM (Réseaux opérateur et multimedia)<br>
-      • Alternance depuis septembre 2025 chez Orange – Pilote d'acitvité client et entreprise<br>
-      • Objectif : devenir développeur frontalier en Suisse (région lémanique)
+      • Baccalauréat technologique STI2D (spécialité SIN)<br>
+      • BUT Réseaux &amp; Télécommunications – parcours ROM (Réseaux Opérateurs et Multimédia)<br>
+      • Alternance depuis septembre 2025 chez Orange – Pilote d'activité client et entreprise<br>
+      • Objectif : devenir travailleur frontalier en Suisse (région lémanique)
     </p>
   </div>
 </section>
@@ -680,7 +698,7 @@
   </div>
   <div class="card">
     <h3 style="color:var(--gold);">Voyages</h3>
-    <p>Radonnées, découverte gastronomique (restaurants renommés).</p>
+    <p>Randonnées, découverte gastronomique (restaurants renommés).</p>
     <div class="gallery">
       <img src="assets/reunion.jpg" alt="La Réunion" />
       <img src="assets/paysage-risoul.jpg" alt="Alpes" />
@@ -743,7 +761,12 @@
     <p id="formStatus" style="text-align:center; color:var(--primary); display:none; font-weight:500;"></p>
   </form>
   <p style="text-align:center; color:var(--dim); margin-top:1.5rem; font-size:0.9rem;">
+    Ou écrivez-moi directement — je réponds rapidement.
   </p>
+</section>
+
+<footer>
+  © 2026 — Nathan REBOURG — Réseaux &amp; Télécommunications · Code, performance &amp; passion automobile
 </footer>
 
 <script>

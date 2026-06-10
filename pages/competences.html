@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Compétences BUT R&T — Nathan REBOURG</title>
+  <meta name="description" content="Compétences du BUT Réseaux & Télécommunications (parcours ROM) de Nathan Rebourg, illustrées par les SAÉ : preuves, analyses réflexives et captures réelles.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --primary:#c8102e; --primary-dark:#a00d24; --gold:#c9a96e;
+      --light:#1d1d1f; --dim:#666; --gray:#f5f5f7; --line:rgba(0,0,0,.08);
+      --transition:all .35s cubic-bezier(.25,.46,.45,.94);
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',sans-serif;color:var(--light);background:#fff;line-height:1.7}
+    a{color:inherit}
+    header{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:1.2rem 5%;
+      display:flex;justify-content:space-between;align-items:center;
+      background:rgba(255,255,255,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+    .logo{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;text-decoration:none;color:var(--light)}
+    .back-btn{background:var(--primary);color:#fff;padding:.7rem 1.6rem;border-radius:50px;
+      text-decoration:none;font-weight:500;font-size:.9rem;transition:var(--transition)}
+    .back-btn:hover{background:var(--primary-dark);transform:translateY(-2px)}
+
+    .hero{padding:9rem 5% 3rem;max-width:1000px;margin:0 auto;text-align:center}
+    .hero .kicker{color:var(--primary);font-weight:600;letter-spacing:3px;text-transform:uppercase;font-size:.85rem}
+    .hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,6vw,4rem);margin:.6rem 0 1rem;line-height:1.05}
+    .hero p{color:var(--dim);font-size:1.1rem;max-width:760px;margin:0 auto}
+
+    .legend{max-width:1000px;margin:1.6rem auto 0;display:flex;gap:1.4rem;flex-wrap:wrap;justify-content:center;
+      font-size:.85rem;color:var(--dim)}
+    .legend b{color:var(--light)}
+
+    .sae-nav{position:sticky;top:64px;z-index:900;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--line);display:flex;gap:.4rem;justify-content:center;flex-wrap:wrap;padding:.8rem 5%}
+    .sae-nav a{font-size:.82rem;font-weight:500;text-decoration:none;color:var(--dim);
+      padding:.45rem 1rem;border-radius:50px;border:1px solid var(--line);transition:var(--transition)}
+    .sae-nav a:hover{color:#fff;background:var(--primary);border-color:var(--primary)}
+
+    .sae{max-width:1280px;margin:0 auto;padding:4rem 5% 1rem}
+    .sae-head{border-left:4px solid var(--primary);padding:.2rem 0 .2rem 1.4rem;margin-bottom:2.2rem}
+    .sae-head .num{color:var(--primary);font-weight:700;letter-spacing:2px;font-size:.9rem;text-transform:uppercase}
+    .sae-head h2{font-family:'Playfair Display',serif;font-size:2.1rem;margin:.2rem 0 .6rem}
+    .sae-head p{color:var(--dim);max-width:820px}
+    .tags{margin-top:.9rem;display:flex;gap:.5rem;flex-wrap:wrap}
+    .tags span{background:var(--gray);border:1px solid var(--line);color:var(--dim);
+      font-size:.78rem;padding:.3rem .8rem;border-radius:50px}
+
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:1.6rem}
+    .card{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;
+      display:flex;flex-direction:column;transition:var(--transition)}
+    .card:hover{transform:translateY(-6px);box-shadow:0 24px 50px rgba(0,0,0,.09);border-color:rgba(200,16,46,.25)}
+    .card-top{padding:1.3rem 1.4rem .8rem}
+    .row{display:flex;justify-content:space-between;align-items:center;gap:.6rem;margin-bottom:.7rem}
+    .badge{font-size:.72rem;font-weight:600;letter-spacing:.5px;color:#fff;background:var(--primary);
+      padding:.28rem .7rem;border-radius:50px;white-space:nowrap}
+    .badge.rom{background:var(--gold);color:#3a2c10}
+    .dots{display:flex;gap:5px}
+    .dots i{width:9px;height:9px;border-radius:50%;background:var(--gray);border:1px solid #d8d8da;display:inline-block}
+    .dots i.on{background:var(--primary);border-color:var(--primary)}
+    .card h3{font-size:1.08rem;line-height:1.35;margin-bottom:.7rem}
+    .card .did,.card .reflex{font-size:.9rem;color:var(--dim);margin-bottom:.6rem}
+    .card .did strong{color:var(--light)}
+    .card .reflex{font-style:italic;border-left:3px solid var(--gold);padding-left:.8rem;background:rgba(201,169,110,.07);
+      border-radius:0 6px 6px 0;padding-top:.5rem;padding-bottom:.5rem}
+    .card .reflex strong{font-style:normal;color:var(--primary)}
+    figure{margin:0;border-top:1px solid var(--line);background:var(--gray)}
+    figure img{width:100%;height:190px;object-fit:cover;object-position:top;display:block;cursor:zoom-in;transition:var(--transition)}
+    figure img:hover{filter:brightness(.96)}
+    figcaption{font-size:.78rem;color:var(--dim);padding:.6rem .9rem;background:#fff;border-top:1px solid var(--line)}
+    .eval{margin-top:auto;padding:.7rem 1.4rem;font-size:.82rem;font-weight:600;color:var(--primary);
+      background:rgba(200,16,46,.05);border-top:1px solid var(--line)}
+    .no-img{padding:1rem 1.4rem;font-size:.82rem;color:#999;font-style:italic}
+
+    footer{text-align:center;padding:4rem 5% 3rem;margin-top:3rem;color:var(--dim);font-size:.9rem;border-top:1px solid var(--line)}
+
+    /* Lightbox */
+    .lb{position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center;
+      z-index:5000;padding:3vh 3vw;cursor:zoom-out}
+    .lb.open{display:flex}
+    .lb img{max-width:96vw;max-height:90vh;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+    .lb .cap{position:absolute;bottom:2vh;left:0;right:0;text-align:center;color:#eee;font-size:.9rem;padding:0 5%}
+    .lb .close{position:absolute;top:2vh;right:3vw;color:#fff;font-size:2rem;cursor:pointer;line-height:1}
+
+    @media(max-width:600px){.grid{grid-template-columns:1fr}.hero{padding-top:8rem}}
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="../index.html" class="logo">Nathan REBOURG</a>
+  <a href="../index.html#projets" class="back-btn">← Retour aux projets</a>
+</header>
+
+<section class="hero">
+  <div class="kicker">BUT Réseaux &amp; Télécommunications · Parcours ROM</div>
+  <h1>Mes compétences, prouvées par mes projets</h1>
+  <p>Chaque compétence du référentiel BUT est démontrée à travers une SAÉ (Situation d'Apprentissage et d'Évaluation) :
+     ce que j'ai réalisé, une <strong>analyse réflexive</strong> et des <strong>captures réelles</strong> de mon travail.
+     Cliquez sur une image pour l'agrandir.</p>
+  <div class="legend">
+    <span><b>RT1-3</b> compétences cœur réseau</span>
+    <span><b>ROM1-2</b> compétences parcours opérateur</span>
+    <span><b>● ● ● ○</b> niveau d'acquisition (sur 4)</span>
+  </div>
+</section>
+
+<nav class="sae-nav">
+  <a href="#sae301">SAÉ 3.01 · LoRaWAN</a>
+  <a href="#sae302">SAÉ 3.02 · App TCP/UDP</a>
+  <a href="#sae303">SAÉ 3.03 · Réseau virtualisé</a>
+  <a href="#sae304">SAÉ 3.04 · ToIP 3CX</a>
+</nav>
+
+<!-- ================= SAÉ 3.01 ================= -->
+<section class="sae" id="sae301">
+  <div class="sae-head">
+    <div class="num">SAÉ 3.01 — en binôme</div>
+    <h2>Système de suivi GPS sur réseau LoRaWAN</h2>
+    <p>Un objet connecté (Arduino + GPS) transmet sa position via le réseau opérateur LoRaWAN The Things Network ;
+       un serveur Node.js récupère les données et les affiche sur une carte web et des applications mobiles (Android &amp; iOS).</p>
+    <div class="tags"><span>LoRaWAN / TTN</span><span>Arduino C++</span><span>Node.js · API REST</span><span>Proxy inversé HTTPS</span><span>Android · iOS</span></div>
+  </div>
+  <div class="grid">
+
+    <article class="card">
+      <div class="card-top">
+        <div class="row"><span class="badge rom">ROM1 · AC24.01</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div>
+        <h3>Administrer les réseaux d'accès fixes et mobiles</h3>
+        <p class="did"><strong>Réalisé —</strong> Configuration de l'objet sur TTN (activation OTAA, canaux EU868, puissance 14 dBm) et analyse des trames montantes (uplink).</p>
+        <p class="reflex"><strong>Analyse —</strong> Manipuler un vrai réseau d'accès LPWAN (duty-cycle, spreading factor, OTAA) m'a fait comprendre ses contraintes bien mieux qu'un cours théorique.</p>
+      </div>
+      <figure><img src="../assets/competences/sae301_ttn.png" alt="Console TTN" data-cap="Console TTN — frequency plan EU868 (SF9), LoRaWAN 1.0.0, identifiants OTAA (AppEUI/DevEUI)"><figcaption>Console TTN — paramètres EU868 et identifiants OTAA</figcaption></figure>
+      <div class="eval">Auto-évaluation : 3/4 — Maîtrisé</div>
+    </article>
+
+    <article class="card">
+      <div class="card-top">
+        <div class="row"><span class="badge">RT2 · AC22.01</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div>
+        <h3>Déployer et caractériser des systèmes de transmissions complexes</h3>
+        <p class="did"><strong>Réalisé —</strong> Caractérisation du lien radio LoRaWAN : RSSI de -62 à -101 dBm, SNR de 6 à 13 dB selon la propagation.</p>
+        <p class="reflex"><strong>Analyse —</strong> Mesurer le RSSI et le SNR sur de vraies trames m'a montré que toute transmission repose sur la maîtrise du canal physique.</p>
+      </div>
+      <figure><img src="../assets/competences/sae301_radio.png" alt="TTN Live data" data-cap="TTN « Live data » — trames uplink avec RSSI, SNR, gateway_id et payload GPS"><figcaption>TTN Live data — RSSI / SNR des trames reçues</figcaption></figure>
+      <div class="eval">Auto-évaluation : 3/4 — Maîtrisé</div>
+    </article>
+
+    <article class="card">
+      <div class="card-top">
+        <div class="row"><span class="badge">RT3 · AC23.05</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div>
+        <h3>Accéder à un ensemble de données depuis une application / un site web</h3>
+        <p class="did"><strong>Réalisé —</strong> API REST Node.js <code>/api/gps-data</code> interrogeant TTN (cache 5 s), formatant le JSON et l'exposant au frontend Leaflet.</p>
+        <p class="reflex"><strong>Analyse —</strong> La qualité d'une application dépend de la qualité de son accès aux données : cache, gestion des erreurs, format.</p>
+      </div>
+      <figure><img src="../assets/competences/sae301_api.png" alt="API REST Node.js" data-cap="API REST Node.js /api/gps-data — récupération TTN (axios), cache 5 s, formatage JSON"><figcaption>API REST Node.js — récupération et formatage des données TTN</figcaption></figure>
+      <div class="eval">Auto-évaluation : 3/4 — Maîtrisé</div>
+    </article>
+
+    <article class="card">
+      <div class="card-top">
+        <div class="row"><span class="badge rom">ROM1 · AC24.05</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div>
+        <h3>Automatiser la gestion des équipements réseaux</h3>
+        <p class="did"><strong>Réalisé —</strong> Firmware Arduino auto-répétitif (envoi GPS toutes les 10 s), polling automatique du serveur et proxy inversé auto-géré.</p>
+        <p class="reflex"><strong>Analyse —</strong> Une fois déployé, le système tourne seul : c'est le principe des systèmes IoT et des réseaux opérateurs, où l'automatisation n'est pas optionnelle.</p>
+      </div>
+      <figure><img src="../assets/competences/sae301_firmware.png" alt="Firmware Arduino" data-cap="Firmware Arduino — envoi LoRa automatique de la position GPS toutes les 10 s"><figcaption>Firmware Arduino — envoi LoRa automatique (10 s)</figcaption></figure>
+      <div class="eval">Auto-évaluation : 3/4 — Maîtrisé</div>
+    </article>
+
+    <article class="card">
+      <div class="card-top">
+        <div class="row"><span class="badge">RT2 · AC22.02</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div>
+        <h3>Mettre en place un accès distant sécurisé</h3>
+        <p class="did"><strong>Réalisé —</strong> Proxy inversé HTTPS sur NAS Synology (8443 → 3000, HSTS, certificat TLS) exposant le serveur Node.js vers l'extérieur.</p>
+        <p class="reflex"><strong>Analyse —</strong> La sécurité ne se limite pas au protocole : certificat, authentification forte et pare-feu comptent tout autant.</p>
+      </div>
+      <figure><img src="../assets/competences/sae301_proxy.png" alt="Proxy inversé Synology" data-cap="Proxy inversé Synology — redirection HTTPS 8443 → 3000"><figcaption>Proxy inversé Synology — HTTPS 8443 → 3000</figcaption></figure>
+      <div class="eval">Auto-évaluation : 3/4 — Maîtrisé</div>
+    </article>
+
+    <article class="card">
+      <div class="card-top">
+        <div class="row"><span class="badge">RT1 · AC21.06</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
+        <h3>Travailler en équipe pour développer ses compétences professionnelles</h3>
+        <p class="did"><strong>Réalisé —</strong> Projet en binôme (firmware / serveur) avec une interface JSON commune définie en amont, et communication professionnelle (mails, comptes-rendus).</p>
+        <p class="reflex"><strong>Analyse —</strong> « On ne peut pas ne pas communiquer » : un code non commenté ou un commit sans message, c'est déjà de la communication négative.</p>
+      </div>
+      <p class="no-img">Preuves : compte-rendu commun structuré &amp; mails professionnels (cours de communication).</p>
+      <div class="eval">Auto-évaluation : 4/4 — Expert</div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ================= SAÉ 3.02 ================= -->
+<section class="sae" id="sae302">
+  <div class="sae-head">
+    <div class="num">SAÉ 3.02</div>
+    <h2>Application Android client / serveur TCP &amp; UDP</h2>
+    <p>Développement d'une application Android native (Java) implémentant de vraies communications réseau :
+       client et serveur TCP multi-clients, client UDP en broadcast, sérialisation d'objets et journal temps réel.</p>
+    <div class="tags"><span>Android · Java</span><span>Sockets TCP/UDP</span><span>Multithreading</span><span>Sérialisation</span></div>
+  </div>
+  <div class="grid">
+
+    <article class="card">
+      <div class="card-top">
+        <div class="row"><span class="badge">RT3 · AC23.02</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
+        <h3>Développer une application à partir d'un cahier des charges (Web ou mobile)</h3>
+        <p class="did"><strong>Réalisé —</strong> Application Android native full-Java : interface XML, clients/serveurs TCP &amp; UDP, sérialisation d'objets <code>Message</code>, multithreading.</p>
+        <p class="reflex"><strong>Analyse —</strong> Le multithreading Android n'est pas optionnel : toute opération réseau sur le thread principal lève une <code>NetworkOnMainThreadException</code>.</p>
+      </div>
+      <figure><img src="../assets/competences/sae302_app.png" alt="Application Android Client/Serveur" data-cap="Application Android — interface Client/Serveur TCP/UDP avec zone de logs temps réel"><figcaption>Application Android — interface Client/Serveur + logs</figcaption></figure>
+      <div class="eval">Auto-évaluation : 4/4 — Expert</div>
+    </article>
+
+    <article class="card">
+      <div class="card-top">
+        <div class="row"><span class="badge">RT3 · AC23.03</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
+        <h3>Utiliser un protocole réseau pour programmer une application client / serveur</h3>
+        <p class="did"><strong>Réalisé —</strong> TCP (Socket, ServerSocket multi-clients, un thread par client) et UDP (DatagramSocket, broadcast) implémentés et comparés expérimentalement.</p>
+        <p class="reflex"><strong>Analyse —</strong> Programmer directement avec des sockets m'a fait comprendre ce que les frameworks (Retrofit, axios) automatisent en coulisses.</p>
+      </div>
+      <figure><img src="../assets/competences/sae302_app.png" alt="Comparaison TCP/UDP" data-cap="Application Android — comparaison TCP (fiable) vs UDP (rapide, broadcast)"><figcaption>Comparaison TCP / UDP dans l'application</figcaption></figure>
+      <div class="eval">Auto-évaluation : 4/4 — Expert</div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ================= SAÉ 3.03 ================= -->
+<section class="sae" id="sae303">
+  <div class="sae-head">
+    <div class="num">SAÉ 3.03</div>
+    <h2>Infrastructure réseau d'entreprise virtualisée</h2>
+    <p>Conception et déploiement, sous VMware vCenter, de l'infrastructure complète d'une entreprise fictive :
+       routage OSPF, VLANs, DNS, DHCP, RADIUS, Active Directory et accès distant.</p>
+    <div class="tags"><span>VMware vCenter</span><span>OSPF · VLANs</span><span>Windows Server / AD</span><span>Debian · Bind9 · RADIUS</span><span>PowerShell</span></div>
+  </div>
+  <div class="grid">
+
+    <article class="card">
+      <div class="card-top">
+        <div class="row"><span class="badge">RT1 · AC21.03</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div>
+        <h3>Déployer et administrer différentes composantes réseaux</h3>
+        <p class="did"><strong>Réalisé —</strong> Déploiement de VMs (Debian 11, Windows Server 2016) sous vCenter : adressage IP, VLANs, DNS, DHCP, intégration cohérente des services.</p>
+        <p class="reflex"><strong>Analyse —</strong> L'interdépendance des services (DNS avant AD) impose une méthode rigoureuse ; une erreur de redirecteurs DNS m'a coûté du temps mais beaucoup appris.</p>
+      </div>
+      <figure><img src="../assets/competences/sae303_net.png" alt="Configuration réseau Debian" data-cap="Configuration réseau d'une VM Debian (IP statique 192.168.108.226/21, DNS) + test de connectivité"><figcaption>Config réseau Debian + test de connectivité</figcaption></figure>
+      <div class="eval">Auto-évaluation : 3/4 — Maîtrisé</div>
+    </article>
+
+    <article class="card">
+      <div class="card-top">
+        <div class="row"><span class="badge">RT3 · AC23.04</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div>
+        <h3>Installer, administrer un système de gestion de données</h3>
+        <p class="did"><strong>Réalisé —</strong> Active Directory sous Windows Server 2016 : forêt <code>ad.etu46.sae</code>, unités d'organisation, utilisateurs, groupes et GPO de sécurité.</p>
+        <p class="reflex"><strong>Analyse —</strong> L'Active Directory est le système nerveux d'une infra Windows : toutes les authentifications, droits et politiques de sécurité en dépendent.</p>
+      </div>
+      <figure><img src="../assets/competences/sae303_ad.png" alt="Active Directory" data-cap="Active Directory — arborescence des unités d'organisation (CORPORATE, ENTREPRISE : DIRECTION, INVITES, PRODUCTION, TECHNIQUE)"><figcaption>Active Directory — arborescence des OUs</figcaption></figure>
+      <div class="eval">Auto-évaluation : 3/4 — Maîtrisé</div>
+    </article>
+
+    <article class="card">
+      <div class="card-top">
+        <div class="row"><span class="badge rom">ROM1 · AC24.04</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div>
+        <h3>Régler le routage / la commutation et les interconnexions</h3>
+        <p class="did"><strong>Réalisé —</strong> Routage dynamique OSPF + VLANs 802.1Q + routage inter-VLAN, validés par les tables de routage et des tests de connectivité.</p>
+        <p class="reflex"><strong>Analyse —</strong> OSPF et VLANs sont complémentaires : segmentation L2 + découverte L3. Le routage inter-VLAN (router-on-a-stick) a été le point le plus délicat.</p>
+      </div>
+      <figure><img src="../assets/competences/sae303_vlan.png" alt="Tests inter-VLAN" data-cap="Tests de connectivité inter-VLAN (ping entre sous-réseaux du réseau d'entreprise)"><figcaption>Tests de connectivité inter-VLAN</figcaption></figure>
+      <div class="eval">Auto-évaluation : 3/4 — Maîtrisé</div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ================= SAÉ 3.04 ================= -->
+<section class="sae" id="sae304">
+  <div class="sae-head">
+    <div class="num">SAÉ 3.04</div>
+    <h2>Téléphonie sur IP (ToIP) d'entreprise — 3CX</h2>
+    <p>Déploiement et administration d'un service de téléphonie d'entreprise complet avec 3CX :
+       architecture SIP, trunk opérateur, groupes d'appel, serveur vocal interactif, horaires et qualité de service.</p>
+    <div class="tags"><span>3CX · SIP</span><span>Trunk opérateur</span><span>SVI · Groupes d'appel</span><span>Pare-feu / QoS</span><span>QoS-MPLS (DiffServ)</span></div>
+  </div>
+  <div class="grid">
+
+    <article class="card">
+      <div class="card-top">
+        <div class="row"><span class="badge rom">ROM2 · AC25.01</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div>
+        <h3>Choisir une architecture et déployer des services de ToIP</h3>
+        <p class="did"><strong>Réalisé —</strong> 3CX centralisé sur VM Debian + softphones SIP, trunk SIP opérateur, routes sortantes et serveur vocal interactif (SVI).</p>
+        <p class="reflex"><strong>Analyse —</strong> Choisir une architecture ToIP, c'est comprendre les flux (interne/externe), la numérotation et l'intégration réseau (pare-feu, NAT).</p>
+      </div>
+      <figure><img src="../assets/competences/sae304_trunk.png" alt="Trunk SIP 3CX" data-cap="Console 3CX — Trunk SIP « OperateurTelecom » : registrar 192.168.1.17:5060, route par défaut et règle sortante"><figcaption>Console 3CX — Trunk SIP opérateur</figcaption></figure>
+      <div class="eval">Auto-évaluation : 3/4 — Maîtrisé</div>
+    </article>
+
+    <article class="card">
+      <div class="card-top">
+        <div class="row"><span class="badge rom">ROM2 · AC25.02</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div>
+        <h3>Administrer un service de téléphonie pour l'entreprise</h3>
+        <p class="did"><strong>Réalisé —</strong> Extensions (QR codes), groupes de sonnerie SAV &amp; Technique, patron, SVI (Text-To-Speech), horaires de bureau et messagerie vocale.</p>
+        <p class="reflex"><strong>Analyse —</strong> Un service de téléphonie est critique : une panne empêche tout appel. L'administrateur doit avoir des procédures claires pour les urgences.</p>
+      </div>
+      <figure><img src="../assets/competences/sae304_users.png" alt="Plan de numérotation 3CX" data-cap="Console 3CX — plan de numérotation : ACCUEIL 100, SVI 101/102, PATRON 110, SAV 131-133, TECH 141-143"><figcaption>Console 3CX — plan de numérotation</figcaption></figure>
+      <div class="eval">Auto-évaluation : 3/4 — Maîtrisé</div>
+    </article>
+
+    <article class="card">
+      <div class="card-top">
+        <div class="row"><span class="badge rom">ROM2 · AC25.03</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div>
+        <h3>Mettre en place une politique de QoS pour les applications</h3>
+        <p class="did"><strong>Réalisé —</strong> Pare-feu 3CX (ports SIP 5060 / RTP) + étude d'une architecture QoS/MPLS complète (DSCP, LLQ, CBWFQ, WRED, shaping).</p>
+        <p class="reflex"><strong>Analyse —</strong> Ouvrir les bons ports n'est que la 1re couche ; l'opérateur garantit la bande passante (LLQ) et gère la congestion (WRED) de bout en bout.</p>
+      </div>
+      <figure><img src="../assets/competences/sae304_fw.png" alt="Pare-feu 3CX" data-cap="Pare-feu / SBC 3CX — règles de filtrage des flux (passer / bloquer Network_in, blocage par défaut)"><figcaption>Pare-feu / SBC 3CX — règles de filtrage</figcaption></figure>
+      <div class="eval">Auto-évaluation : 3/4 — Maîtrisé</div>
+    </article>
+
+    <article class="card">
+      <div class="card-top">
+        <div class="row"><span class="badge">RT1 · AC21.02</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div>
+        <h3>Configurer et expliquer une politique de QoS et la sécurité de base d'un réseau</h3>
+        <p class="did"><strong>Réalisé —</strong> Architecture DiffServ over MPLS (avec Léo) : classification DSCP → EXP, policing, LLQ / CBWFQ / WRED et shaping, configurés sur 4 routeurs Cisco.</p>
+        <p class="reflex"><strong>Analyse —</strong> Le principe « marquer une fois, respecter partout » assure la scalabilité des backbones opérateurs (Orange, SFR).</p>
+      </div>
+      <figure><img src="../assets/competences/qos_llq.png" alt="show policy-map QoS" data-cap="Sortie « show policy-map » sur routeur Cisco — LLQ (Strict Priority) + bande passante garantie par classe"><figcaption>Cisco IOS — <code>show policy-map</code> (LLQ + CBWFQ)</figcaption></figure>
+      <div class="eval">Auto-évaluation : 3/4 — Maîtrisé</div>
+    </article>
+
+  </div>
+</section>
+
+<footer>
+  © 2026 — Nathan REBOURG — Portfolio BUT R&amp;T 2A · Parcours ROM · IUT de Roanne<br>
+  Preuves &amp; analyses réflexives complètes disponibles sur demande.
+</footer>
+
+<!-- Lightbox -->
+<div class="lb" id="lb"><span class="close">&times;</span><img id="lb-img" src="" alt=""><div class="cap" id="lb-cap"></div></div>
+
+<script>
+  const lb=document.getElementById('lb'), lbImg=document.getElementById('lb-img'), lbCap=document.getElementById('lb-cap');
+  document.querySelectorAll('figure img').forEach(img=>{
+    img.addEventListener('click',()=>{lbImg.src=img.src;lbCap.textContent=img.dataset.cap||img.alt;lb.classList.add('open');});
+  });
+  lb.addEventListener('click',()=>lb.classList.remove('open'));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')lb.classList.remove('open');});
+</script>
+</body>
+</html>

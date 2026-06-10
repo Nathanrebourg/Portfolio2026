@@ -209,24 +209,35 @@
 
     <article class="card">
       <div class="card-top">
-        <div class="row"><span class="badge">RT3 · AC23.02</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
+        <div class="row"><span class="badge">RT3 · AC23.02</span><span class="dots"><i class="on"></i><i class="on"></i><i></i><i></i></span></div>
         <h3>Développer une application à partir d'un cahier des charges (Web ou mobile)</h3>
         <p class="did"><strong>Réalisé —</strong> Application Android native full-Java : interface XML, clients/serveurs TCP &amp; UDP, sérialisation d'objets <code>Message</code>, multithreading.</p>
         <p class="reflex"><strong>Analyse —</strong> Le multithreading Android n'est pas optionnel : toute opération réseau sur le thread principal lève une <code>NetworkOnMainThreadException</code>.</p>
       </div>
-      <figure><img src="../assets/competences/sae302_app.png" alt="Application Android Client/Serveur" data-cap="Application Android — interface Client/Serveur TCP/UDP avec zone de logs temps réel"><figcaption>Application Android — interface Client/Serveur + logs</figcaption></figure>
+      <figure><img src="../assets/competences/sae302_server.png" alt="Code serveur TCP Java" data-cap="Serveur TCP (ClientHandler) en Java : lecture d'un objet Message sérialisé puis dispatch de service (time / echo) et réponse au client"><figcaption>Code du serveur TCP — dispatch de service (time / echo)</figcaption></figure>
       <div class="eval">Auto-évaluation : 2/4 — En cours</div>
     </article>
 
     <article class="card">
       <div class="card-top">
-        <div class="row"><span class="badge">RT3 · AC23.03</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
+        <div class="row"><span class="badge">RT3 · AC23.03</span><span class="dots"><i class="on"></i><i class="on"></i><i></i><i></i></span></div>
         <h3>Utiliser un protocole réseau pour programmer une application client / serveur</h3>
         <p class="did"><strong>Réalisé —</strong> TCP (Socket, ServerSocket multi-clients, un thread par client) et UDP (DatagramSocket, broadcast) implémentés et comparés expérimentalement.</p>
         <p class="reflex"><strong>Analyse —</strong> Programmer directement avec des sockets m'a fait comprendre ce que les frameworks (Retrofit, axios) automatisent en coulisses.</p>
       </div>
-      <figure><img src="../assets/competences/sae302_app.png" alt="Comparaison TCP/UDP" data-cap="Application Android — comparaison TCP (fiable) vs UDP (rapide, broadcast)"><figcaption>Comparaison TCP / UDP dans l'application</figcaption></figure>
+      <figure><img src="../assets/competences/sae302_udp.png" alt="Code client UDP Java" data-cap="Client UDP en Java : envoi d'un DatagramPacket en broadcast (255.255.255.255, port 6000) — communication sans connexion"><figcaption>Code du client UDP — envoi en broadcast</figcaption></figure>
       <div class="eval">Auto-évaluation : 2/4 — En cours</div>
+    </article>
+
+    <article class="card">
+      <div class="card-top">
+        <div class="row"><span class="badge">RT3 · AC23.05</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div>
+        <h3>Accéder à un ensemble de données depuis une application</h3>
+        <p class="did"><strong>Réalisé —</strong> Le client accède en temps réel aux données renvoyées par les services du serveur (service « time » → date système, « echo » → message) et les affiche dans le journal de l'application.</p>
+        <p class="reflex"><strong>Analyse —</strong> Même sans base de données, structurer l'accès aux données (objets <code>Message</code> sérialisés, gestion des réponses et des erreurs) demande une vraie conception côté client.</p>
+      </div>
+      <figure><img src="../assets/competences/sae302_app.png" alt="Application Android — affichage des données" data-cap="Application Android — journal temps réel : les données renvoyées par les services du serveur sont reçues et affichées"><figcaption>Application Android — accès et affichage des données reçues</figcaption></figure>
+      <div class="eval">Auto-évaluation : 3/4 — Maîtrisé</div>
     </article>
 
   </div>
@@ -285,8 +296,8 @@
     <div class="num">SAÉ 3.04</div>
     <h2>Téléphonie sur IP (ToIP) d'entreprise — 3CX</h2>
     <p>Déploiement et administration d'un service de téléphonie d'entreprise complet avec 3CX :
-       architecture SIP, trunk opérateur, groupes d'appel, serveur vocal interactif, horaires et qualité de service.</p>
-    <div class="tags"><span>3CX · SIP</span><span>Trunk opérateur</span><span>SVI · Groupes d'appel</span><span>Pare-feu / QoS</span><span>QoS-MPLS (DiffServ)</span></div>
+       architecture SIP, trunk opérateur, groupes d'appel, serveur vocal interactif, horaires et messagerie vocale.</p>
+    <div class="tags"><span>3CX · SIP</span><span>Trunk opérateur</span><span>SVI · Groupes d'appel</span><span>Extensions · QR codes</span><span>Messagerie vocale</span></div>
   </div>
   <div class="grid">
 
@@ -309,28 +320,6 @@
         <p class="reflex"><strong>Analyse —</strong> Un service de téléphonie est critique : une panne empêche tout appel. L'administrateur doit avoir des procédures claires pour les urgences.</p>
       </div>
       <figure><img src="../assets/competences/sae304_users.png" alt="Plan de numérotation 3CX" data-cap="Console 3CX — plan de numérotation : ACCUEIL 100, SVI 101/102, PATRON 110, SAV 131-133, TECH 141-143"><figcaption>Console 3CX — plan de numérotation</figcaption></figure>
-      <div class="eval">Auto-évaluation : 3/4 — Maîtrisé</div>
-    </article>
-
-    <article class="card">
-      <div class="card-top">
-        <div class="row"><span class="badge rom">ROM2 · AC25.03</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div>
-        <h3>Mettre en place une politique de QoS pour les applications</h3>
-        <p class="did"><strong>Réalisé —</strong> Pare-feu 3CX (ports SIP 5060 / RTP) + étude d'une architecture QoS/MPLS complète (DSCP, LLQ, CBWFQ, WRED, shaping).</p>
-        <p class="reflex"><strong>Analyse —</strong> Ouvrir les bons ports n'est que la 1re couche ; l'opérateur garantit la bande passante (LLQ) et gère la congestion (WRED) de bout en bout.</p>
-      </div>
-      <figure><img src="../assets/competences/sae304_fw.png" alt="Pare-feu 3CX" data-cap="Pare-feu / SBC 3CX — règles de filtrage des flux (passer / bloquer Network_in, blocage par défaut)"><figcaption>Pare-feu / SBC 3CX — règles de filtrage</figcaption></figure>
-      <div class="eval">Auto-évaluation : 3/4 — Maîtrisé</div>
-    </article>
-
-    <article class="card">
-      <div class="card-top">
-        <div class="row"><span class="badge">RT1 · AC21.02</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div>
-        <h3>Configurer et expliquer une politique de QoS et la sécurité de base d'un réseau</h3>
-        <p class="did"><strong>Réalisé —</strong> Architecture DiffServ over MPLS (avec Léo) : classification DSCP → EXP, policing, LLQ / CBWFQ / WRED et shaping, configurés sur 4 routeurs Cisco.</p>
-        <p class="reflex"><strong>Analyse —</strong> Le principe « marquer une fois, respecter partout » assure la scalabilité des backbones opérateurs (Orange, SFR).</p>
-      </div>
-      <figure><img src="../assets/competences/qos_llq.png" alt="show policy-map QoS" data-cap="Sortie « show policy-map » sur routeur Cisco — LLQ (Strict Priority) + bande passante garantie par classe"><figcaption>Cisco IOS — <code>show policy-map</code> (LLQ + CBWFQ)</figcaption></figure>
       <div class="eval">Auto-évaluation : 3/4 — Maîtrisé</div>
     </article>
 
